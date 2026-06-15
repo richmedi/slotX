@@ -2,57 +2,151 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>slotX</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Nile Hub</title>
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-margin:0;
-font-family:Arial;
-background:#111;
+font-family:Arial,sans-serif;
+background:#090909;
 color:#fff;
+}
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
+padding:20px;
+background:
+linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+url('https://images.unsplash.com/photo-1539650116574-75c0c6d73f4e?q=80&w=1600') center/cover;
 }
-header{
-padding:60px 20px;
-background:linear-gradient(45deg,#6a00ff,#00a2ff);
+.logo{
+font-size:60px;
+font-weight:900;
+color:#f7c948;
+text-shadow:0 0 25px #f7c948;
 }
-h1{font-size:50px;}
+.subtitle{
+max-width:700px;
+margin:20px auto;
+color:#ddd;
+}
+.btns{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:25px;
+}
 .btn{
-display:inline-block;
-margin:10px;
-padding:15px 30px;
-background:#fff;
-color:#000;
+padding:14px 28px;
+border-radius:12px;
 text-decoration:none;
-border-radius:10px;
 font-weight:bold;
+background:#f7c948;
+color:#000;
+}
+.section{
+padding:70px 20px;
+max-width:1200px;
+margin:auto;
+}
+.title{
+text-align:center;
+font-size:36px;
+color:#f7c948;
+margin-bottom:40px;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
 }
 .card{
-background:#1c1c1c;
-margin:20px;
-padding:20px;
-border-radius:15px;
+background:#141414;
+border:1px solid #2b2b2b;
+border-radius:18px;
+padding:25px;
+transition:.3s;
+}
+.card:hover{
+transform:translateY(-6px);
+border-color:#f7c948;
+}
+.card h3{
+color:#f7c948;
+margin-bottom:10px;
+}
+.card a{
+display:inline-block;
+margin-top:15px;
+padding:10px 20px;
+background:#f7c948;
+color:#000;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+}
+footer{
+padding:30px;
+text-align:center;
+border-top:1px solid #222;
+color:#999;
 }
 </style>
 </head>
 <body>
 
-<header>
-<h1>slotX</h1>
-<p>Resmi Bağlantılar</p>
-<a class="btn" href="#">Giriş</a>
-<a class="btn" href="#">Telegram</a>
-</header>
+<section class="hero">
+<div class="logo">ROYAL NILE</div>
+<p class="subtitle">
+Premium bağlantılar, duyurular ve sponsor vitrinleri tek merkezde.
+</p>
+
+<div class="btns">
+<a href="#" class="btn">Topluluğa Katıl</a>
+<a href="#" class="btn">İletişim</a>
+</div>
+</section>
+
+<section class="section">
+<h2 class="title">Premium Sponsorlar</h2>
+
+<div class="grid">
 
 <div class="card">
-<h2>Sponsor 1</h2>
-<p>Tanıtım Alanı</p>
+<h3>Sponsor Alanı 1</h3>
+<p>Özel tanıtım bölgesi.</p>
+<a href="#">Detay</a>
 </div>
 
 <div class="card">
-<h2>Sponsor 2</h2>
-<p>Tanıtım Alanı</p>
+<h3>Sponsor Alanı 2</h3>
+<p>Premium görünürlük alanı.</p>
+<a href="#">Detay</a>
 </div>
+
+<div class="card">
+<h3>Sponsor Alanı 3</h3>
+<p>Öne çıkan marka vitrini.</p>
+<a href="#">Detay</a>
+</div>
+
+<div class="card">
+<h3>Sponsor Alanı 4</h3>
+<p>Özel reklam bölümü.</p>
+<a href="#">Detay</a>
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 Royal Nile Premium Hub
+</footer>
 
 </body>
 </html>
