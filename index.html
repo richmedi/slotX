@@ -3,199 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>slotX - Resmi Casino ve Bahis Bağlantıları</title>
+    <title>slotX - Resmi Giriş Adresi</title>
     <style>
-        /* Genel Stil Ayarları */
+        /* Cleopatra Casino Teması Genel Ayarları */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
         }
 
         body {
-            background: radial-gradient(circle, #1a0f2e 0%, #0a0514 100%);
+            background: #0d0614 url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?q=80&w=1600&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
             color: #fff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            padding: 20px;
+            position: relative;
         }
 
-        /* Üst Menü / Logo Alanı */
-        header {
+        /* Arka planı karartmak ve casino atmosferi vermek için overlay */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(13, 6, 20, 0.9) 0%, rgba(20, 5, 35, 0.95) 100%);
+            z-index: 1;
+        }
+
+        /* Tüm içerikleri üste çıkarma */
+        .main-wrapper {
+            position: relative;
+            z-index: 2;
             width: 100%;
-            max-width: 600px;
+            max-width: 550px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Üst Altın Şerit ve Logo */
+        header {
             text-align: center;
-            margin-bottom: 30px;
-            padding: 20px 0;
+            margin-top: 20px;
+            margin-bottom: 25px;
+            width: 100%;
         }
 
         .logo {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            background: linear-gradient(45deg, #ff007f, #ffaa00);
+            letter-spacing: 3px;
+            color: #fff;
+            background: linear-gradient(to bottom, #ffe57f 0%, #ffc107 50%, #b38600 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255, 0, 127, 0.5);
+            filter: drop-shadow(0px 0px 15px rgba(255, 193, 7, 0.6));
             display: inline-block;
         }
 
-        /* Ana Konteyner */
-        .container {
+        .verified-badge {
+            background: #ffc107;
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 5px;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px rgba(255,193,7,0.4);
+        }
+
+        /* Canlı Uyarı Paneli */
+        .alert-bar {
+            background: rgba(255, 0, 85, 0.2);
+            border: 1px solid #ff0055;
+            color: #ffb3cc;
             width: 100%;
-            max-width: 500px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 30px 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            padding: 12px;
             text-align: center;
-        }
-
-        .subtitle {
-            color: #b3b3b3;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
             margin-bottom: 25px;
-            font-weight: 400;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.2);
         }
 
-        /* Buton Grupları */
-        .btn-group {
+        /* Casino Giriş Buton Listesi */
+        .casino-grid {
+            width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 18px;
         }
 
-        /* Ortak Buton Stili */
-        .btn {
+        /* Örnek Sitedeki Gibi Büyük Görkemli Butonlar */
+        .casino-card {
+            width: 100%;
+            height: 85px;
+            border-radius: 16px;
+            text-decoration: none;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 16px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            justify-content: space-between;
+            padding: 0 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .casino-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%);
+            z-index: 1;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .card-sub {
+            font-size: 0.75rem;
+            color: #e0e0e0;
             text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        .play-btn {
+            position: relative;
+            z-index: 2;
+            background: #fff;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
             letter-spacing: 0.5px;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        .casino-card:hover {
+            transform: scale(1.02);
         }
 
-        /* Sponsor / Bahis Link Renkleri */
-        .btn-ligobet {
-            background: linear-gradient(135deg, #ffcc00 0%, #ff6600 100%);
-            color: #000;
-        }
-        .btn-ligobet:hover {
-            text-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
-
-        .btn-bet21 {
-            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+        .casino-card:hover .play-btn {
+            background: #000;
             color: #fff;
         }
 
-        .btn-paripulse {
-            background: linear-gradient(135deg, #9400d3 0%, #4b0082 100%);
-            color: #fff;
+        /* Sitelere Özel Renk ve Tasarımlar (Cleopatra Stili) */
+        .ligobet {
+            background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=400&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #ffcc00;
         }
+        .ligobet .card-title { color: #ffcc00; }
+        .ligobet:hover { box-shadow: 0 0 20px rgba(255, 204, 0, 0.5); }
 
-        .btn-betbalina {
-            background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
-            color: #000;
+        .bet21 {
+            background-image: url('https://images.unsplash.com/photo-1606167668584-78701c57f13d?q=80&w=400&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #00c6ff;
         }
+        .bet21 .card-title { color: #00c6ff; }
+        .bet21:hover { box-shadow: 0 0 20px rgba(0, 198, 255, 0.5); }
 
-        /* Sosyal Medya ve İletişim Butonları */
-        .social-grid {
+        .paripulse {
+            background-image: url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=400&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #e040fb;
+        }
+        .paripulse .card-title { color: #e040fb; }
+        .paripulse:hover { box-shadow: 0 0 20px rgba(224, 64, 251, 0.5); }
+
+        .betbalina {
+            background-image: url('https://images.unsplash.com/photo-1541252260730-0412e8e2108e?q=80&w=400&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #00ff87;
+        }
+        .betbalina .card-title { color: #00ff87; }
+        .betbalina:hover { box-shadow: 0 0 20px rgba(0, 255, 135, 0.5); }
+
+
+        /* İletişim & Sosyal Medya Alt Alanı */
+        .social-container {
+            width: 100%;
+            margin-top: 30px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
+            gap: 12px;
         }
 
-        .btn-social {
-            padding: 12px;
-            font-size: 0.9rem;
-            background: rgba(255, 255, 255, 0.07);
+        .social-link {
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #24a1de; /* Telegram Mavisi */
-            border-radius: 10px;
+            padding: 14px;
+            border-radius: 12px;
             text-decoration: none;
+            color: #fff;
+            font-size: 0.9rem;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s;
+            text-align: center;
+            transition: 0.2s;
         }
 
-        .btn-social:hover {
+        .social-link.duyuru {
+            border-color: #24a1de;
+            color: #64b5f6;
+        }
+
+        .social-link.duyuru:hover {
             background: #24a1de;
             color: #fff;
-            border-color: #24a1de;
+        }
+
+        .social-link.destek {
+            border-color: #ff9800;
+            color: #ffb74d;
+        }
+
+        .social-link.destek:hover {
+            background: #ff9800;
+            color: #000;
         }
 
         /* Alt Bilgi */
         footer {
             margin-top: 40px;
-            font-size: 0.8rem;
-            color: #666;
             text-align: center;
-        }
-
-        footer p {
-            margin-bottom: 5px;
+            font-size: 0.8rem;
+            color: #756d82;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">slotX</div>
-    </header>
+    <div class="main-wrapper">
+        
+        <!-- Üst Alan ve Logo -->
+        <header>
+            <div class="logo">slotX</div>
+            <br>
+            <span class="verified-badge">✓ RESMİ ORTAKLIK SAYFASI</span>
+        </header>
 
-    <div class="container">
-        <p class="subtitle">Güncel ve Güvenilir Giriş Adresleri</p>
-
-        <div class="btn-group">
-            <a href="https://ligogr.xyz/BBlq" target="_blank" class="btn btn-ligobet">LİGOBET VIP GİRİŞ</a>
-            
-            <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="btn btn-bet21">BET21 GİRİŞ</a>
-            
-            <a href="https://pari-pulse.com/Bhbar" target="_blank" class="btn btn-paripulse">PARİPULSE GİRİŞ</a>
-            
-            <a href="https://betbal.ink/peri" target="_blank" class="btn btn-betbalina">BETBALİNA GİRİŞ</a>
+        <!-- Canlı Duyuru Paneli -->
+        <div class="alert-bar">
+            ⚠️ Dolandırıcılardan korunmak için yalnızca bu sayfadaki butonları kullanınız!
         </div>
 
-        <div class="social-grid">
-            <a href="https://t.me/slotxduyuru" target="_blank" class="btn-social">
-                📢 Duyuru Kanalı
+        <!-- Aktif Giriş Linkleri Kartları -->
+        <div class="casino-grid">
+            
+            <!-- LİGOBET -->
+            <a href="https://ligogr.xyz/BBlq" target="_blank" class="casino-card ligobet">
+                <div class="card-content">
+                    <div class="card-title">LİGOBET VIP</div>
+                    <div class="card-sub">Anında Güvenli Giriş</div>
+                </div>
+                <div class="play-btn">GİRİŞ YAP</div>
             </a>
-            <a href="https://t.me/slotXmarketing" target="_blank" class="btn-social">
-                🤝 İletişim / Marketing
+
+            <!-- BET21 -->
+            <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="casino-card bet21">
+                <div class="card-content">
+                    <div class="card-title">BET21</div>
+                    <div class="card-sub">%30 Cashback Avantajı</div>
+                </div>
+                <div class="play-btn">GİRİŞ YAP</div>
+            </a>
+
+            <!-- PARİPULSE -->
+            <a href="https://pari-pulse.com/Bhbar" target="_blank" class="casino-card paripulse">
+                <div class="card-content">
+                    <div class="card-title">PARİPULSE</div>
+                    <div class="card-sub">Resmi Güncel Adres</div>
+                </div>
+                <div class="play-btn">GİRİŞ YAP</div>
+            </a>
+
+            <!-- BETBALİNA -->
+            <a href="https://betbal.ink/peri" target="_blank" class="casino-card betbalina">
+                <div class="card-content">
+                    <div class="card-title">BETBALİNA</div>
+                    <div class="card-sub">Kesintisiz Slot Erişimi</div>
+                </div>
+                <div class="play-btn">GİRİŞ YAP</div>
+            </a>
+
+        </div>
+
+        <!-- Alt İletişim / Telegram Alanı -->
+        <div class="social-container">
+            <a href="https://t.me/slotxduyuru" target="_blank" class="social-link duyuru">
+                📢 Resmi Duyuru
+            </a>
+            <a href="https://t.me/slotXmarketing" target="_blank" class="social-link destek">
+                🤝 Marketing / İletişim
             </a>
         </div>
+
+        <!-- Footer Bilgisi -->
+        <footer>
+            <p>© 2026 slotX Giriş. Tüm hakları saklıdır.</p>
+            <p>Sorumlu oyun kurallarına uyunuz. 18+</p>
+        </footer>
+
     </div>
-
-    <footer>
-        <p>&copy; 2026 slotX. Tüm Hakları Saklıdır.</p>
-        <p>18+ | Lütfen bilinçli oynayınız.</p>
-    </footer>
 
 </body>
 </html>
