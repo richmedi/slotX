@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>slotX — 4K Ultra VIP 3D Gateway</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <title>slotX — Exclusive Cleopatra Gold Lounge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@200;400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-deep: #020204;
-            --card-glass: rgba(10, 12, 18, 0.75);
-            --gold: #d4af37;
-            --gold-glow: rgba(212, 175, 55, 0.3);
-            --crimson: #ff2a3b;
-            --crimson-glow: rgba(255, 42, 59, 0.4);
-            --platinum: #f1f2f6;
+            --cleo-black: #060608;
+            --cleo-dark: #0f1015;
+            --cleo-gold: #cca43b;
+            --cleo-gold-dark: #8f742a;
+            --cleo-gold-glow: rgba(204, 164, 59, 0.25);
+            --platinum: #e5e5e5;
+            --text-muted: #5f6470;
         }
 
         * {
@@ -25,7 +25,7 @@
         }
 
         body {
-            background-color: var(--bg-deep);
+            background-color: var(--cleo-black);
             color: #ffffff;
             min-height: 100vh;
             display: flex;
@@ -35,8 +35,8 @@
             position: relative;
         }
 
-        /* 🪐 4K 3 BOYUTLU ETKİLEŞİMLİ CANVAS */
-        #render-canvas {
+        /* 🌌 CANLI 4K ALTIN PARÇACIK ARKA PLANI (CLEOPATRA MATRIX) */
+        #cleo-canvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -46,50 +46,54 @@
             pointer-events: none;
         }
 
-        /* Derinlik Artırıcı Karanlık Katman */
-        .viewport-overlay {
+        /* Derin Saray Atmosferi Overlay */
+        .bg-vignette {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, transparent 10%, var(--bg-deep) 90%);
+            background: radial-gradient(circle at 50% 30%, transparent 10%, var(--cleo-black) 85%);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* Header / Üst Panel */
+        /* Header - Antik Altın Şeritli Üst Panel */
         header {
             max-width: 1400px;
             width: 100%;
             margin: 0 auto;
-            padding: 40px 24px;
+            padding: 50px 24px 30px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(204, 164, 59, 0.08);
+            position: relative;
         }
 
         .logo {
-            font-family: 'Syncopate', sans-serif;
-            font-size: 2.4rem;
-            font-weight: 700;
-            letter-spacing: -2px;
+            font-family: 'Cinzel', serif;
+            font-size: 2.6rem;
+            font-weight: 900;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            background: linear-gradient(180deg, #ffffff 40%, #777777 100%);
+            background: linear-gradient(180deg, #ffffff 30%, var(--cleo-gold) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .secure-badge {
-            font-size: 0.65rem;
+        .system-badge {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--gold);
+            color: var(--cleo-gold);
             font-weight: 700;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 8px 16px;
-            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(204, 164, 59, 0.2);
+            padding: 10px 20px;
+            background: rgba(15, 16, 21, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        /* Ana İçerik Alanı */
+        /* Ana Gövde Düzeni */
         .wrapper {
             max-width: 1400px;
             width: 100%;
@@ -98,105 +102,117 @@
             flex: 1;
         }
 
-        .main-headline {
+        .headline {
             margin-bottom: 60px;
+            text-align: center;
         }
 
-        .main-headline h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            letter-spacing: -2px;
+        .headline h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            line-height: 0.95;
-            background: linear-gradient(180deg, #ffffff 50%, rgba(255,255,255,0.1) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            color: #ffffff;
+        }
+        
+        .headline h1 span {
+            font-family: 'Cinzel', serif;
+            color: var(--cleo-gold);
+            display: block;
+            font-size: 1.5rem;
+            letter-spacing: 8px;
+            margin-top: 15px;
+            font-weight: 700;
         }
 
-        /* 3D Premium Kart Grid Sistemi */
-        .portal-grid {
+        /* Cleopatra Saray Sütunları Tarzı Grid Sistemi */
+        .cleo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
             margin-bottom: 80px;
         }
 
-        /* Cam-Metal Karışımı Ultra Lüks Kart */
-        .portal-card {
-            background: var(--card-glass);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            padding: 50px 35px;
+        /* Ağır Elit Kart Mimarisi */
+        .cleo-card {
+            background: var(--cleo-dark);
+            border: 1px solid rgba(204, 164, 59, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 55px 40px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 400px;
+            min-height: 420px;
             position: relative;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
         }
 
-        /* Üst 3D Işık Çizgisi */
-        .portal-card::before {
+        /* Sol ve Sağ İnce Altın Sütun Çizgisi */
+        .cleo-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 0; height: 2px;
-            background: var(--gold);
-            box-shadow: 0 0 15px var(--gold);
-            transition: width 0.4s ease;
+            top: 0; left: 0; width: 2px; height: 0;
+            background: linear-gradient(180deg, var(--cleo-gold) 0%, transparent 100%);
+            transition: height 0.5s ease;
         }
 
-        .portal-card:hover {
-            transform: scale(1.03) translateY(-5px);
-            background: rgba(18, 22, 33, 0.85);
-            border-color: rgba(212, 175, 55, 0.2);
-            box-shadow: 0 40px 80px rgba(212, 175, 55, 0.05);
+        .cleo-card:hover {
+            transform: scale(1.02) translateY(-5px);
+            background: rgba(20, 22, 31, 0.9);
+            border-color: rgba(204, 164, 59, 0.25);
+            box-shadow: 0 40px 80px rgba(204, 164, 59, 0.06);
         }
 
-        .portal-card:hover::before {
-            width: 100%;
+        .cleo-card:hover::before {
+            height: 100%;
         }
 
-        .card-tag {
-            font-family: 'Syncopate', sans-serif;
-            font-size: 0.65rem;
-            color: rgba(255, 255, 255, 0.2);
+        .card-meta {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            color: var(--cleo-gold);
             letter-spacing: 3px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-weight: 700;
         }
 
-        .portal-card h2 {
-            font-size: 2rem;
-            font-weight: 900;
-            letter-spacing: -1px;
+        .cleo-card h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
             text-transform: uppercase;
             color: #ffffff;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
-        .portal-card p {
-            color: #636975;
-            font-size: 0.88rem;
-            line-height: 1.6;
+        .cleo-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
             margin-bottom: 40px;
+            font-weight: 400;
             transition: color 0.3s;
         }
 
-        .portal-card:hover p {
-            color: #b0b9c8;
+        .cleo-card:hover p {
+            color: #b9c1d0;
         }
 
-        /* 🚀 ENERJİK GİRİŞ BUTONLARI */
-        .launch-link {
+        /* 👑 PREMİUM AKTİF BUTONLAR */
+        .gate-btn {
             display: block;
             width: 100%;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(204, 164, 59, 0.03);
+            border: 1px solid rgba(204, 164, 59, 0.15);
             color: #ffffff;
             padding: 18px;
-            font-size: 0.75rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 4px;
@@ -205,48 +221,46 @@
             transition: all 0.4s ease;
         }
 
-        .portal-card:hover .launch-link {
-            background: #ffffff;
+        .cleo-card:hover .gate-btn {
+            background: linear-gradient(135deg, var(--cleo-gold) 0%, var(--cleo-gold-dark) 100%);
             color: #000000;
             font-weight: 900;
-            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15);
             border-color: transparent;
+            box-shadow: 0 15px 30px var(--cleo-gold-glow);
         }
 
-        /* 🔥 LİGOBET - ASİL VIP ERİŞİM ALANI */
-        .ligobet-override {
-            background: linear-gradient(180deg, rgba(22, 12, 14, 0.8) 0%, rgba(10, 5, 6, 0.95) 100%);
+        /* 🌟 LİGOBET - VIP GOLD SPECIAL EDITION KARTI */
+        .vip-exclusive {
+            background: linear-gradient(180deg, rgba(23, 19, 11, 0.85) 0%, rgba(10, 8, 5, 0.98) 100%);
+            border: 1px solid rgba(204, 164, 59, 0.15);
         }
-
-        .ligobet-override::before {
-            background: var(--crimson);
-            box-shadow: 0 0 15px var(--crimson);
+        .vip-exclusive::before {
+            background: #ffffff;
+            box-shadow: 0 0 15px #ffffff;
         }
-
-        .ligobet-override .card-tag {
-            color: var(--crimson);
-        }
-
-        .ligobet-override:hover {
-            border-color: rgba(255, 42, 59, 0.25);
-            box-shadow: 0 40px 80px rgba(255, 42, 59, 0.05);
-        }
-
-        .ligobet-override:hover .launch-link {
-            background: var(--crimson);
+        .vip-exclusive .card-meta {
             color: #ffffff;
-            box-shadow: 0 15px 30px var(--crimson-glow);
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+        .vip-exclusive .gate-btn {
+            background: rgba(255,255,255,0.02);
+            border-color: rgba(255,255,255,0.2);
+        }
+        .vip-exclusive:hover .gate-btn {
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
         }
 
-        /* Alt İletişim / Masalar */
-        .footer-terminal {
-            background: #010102;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
+        /* Alt İletişim / Koordinasyon İstasyonu */
+        .footer-desk {
+            background: #030305;
+            border-top: 1px solid rgba(204, 164, 59, 0.05);
             padding: 60px 24px;
             z-index: 2;
         }
 
-        .terminal-container {
+        .footer-container {
             max-width: 1400px;
             width: 100%;
             margin: 0 auto;
@@ -257,30 +271,32 @@
             gap: 40px;
         }
 
-        .terminal-text h3 {
-            font-family: 'Syncopate', sans-serif;
-            font-size: 1.1rem;
+        .desk-title h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #ffffff;
+            letter-spacing: 1px;
             margin-bottom: 5px;
         }
 
-        .terminal-text p {
-            color: #3b3e4a;
+        .desk-title p {
+            color: #434754;
             font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
-        .terminal-buttons {
+        .desk-actions {
             display: flex;
             gap: 15px;
         }
 
-        .btn-social {
+        .social-link {
             text-decoration: none;
             color: #ffffff;
+            font-family: 'Cinzel', serif;
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 3px;
@@ -291,214 +307,198 @@
             transition: all 0.3s;
         }
 
-        .btn-social:hover {
+        .social-link:hover {
             background: #ffffff;
             color: #000000;
         }
 
-        .btn-social.tg-marketing {
-            color: var(--gold);
-            border-color: rgba(212, 175, 55, 0.2);
+        .social-link.marketing-highlight {
+            color: var(--cleo-gold);
+            border-color: rgba(204, 164, 59, 0.2);
         }
 
-        .btn-social.tg-marketing:hover {
-            background: var(--gold);
+        .social-link.marketing-highlight:hover {
+            background: var(--cleo-gold);
             color: #000000;
-            box-shadow: 0 0 20px var(--gold-glow);
+            box-shadow: 0 0 25px var(--cleo-gold-glow);
             border-color: transparent;
         }
 
-        .legal-notice {
+        .legal-text {
             width: 100%;
             text-align: center;
             margin-top: 50px;
             font-size: 0.65rem;
-            color: #17181c;
+            color: #21242d;
             letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 700;
         }
 
-        /* Mobil Cihaz Duyarlılığı */
+        /* Kusursuz Mobil Entegrasyonu */
         @media (max-width: 900px) {
             header { padding: 30px 20px; }
-            .main-headline h1 { font-size: 2.5rem; }
-            .portal-grid { grid-template-columns: 1fr; gap: 20px; }
-            .terminal-container { flex-direction: column; text-align: center; }
-            .terminal-buttons { width: 100%; flex-direction: column; }
-            .btn-social { width: 100%; text-align: center; }
+            .headline h1 { font-size: 2.3rem; }
+            .cleo-grid { grid-template-columns: 1fr; gap: 20px; }
+            .footer-container { flex-direction: column; text-align: center; }
+            .desk-actions { width: 100%; flex-direction: column; }
+            .social-link { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <canvas id="render-canvas"></canvas>
-    <div class="viewport-overlay"></div>
+    <canvas id="cleo-canvas"></canvas>
+    <div class="bg-vignette"></div>
 
     <header>
         <div class="logo">slotX</div>
-        <div class="secure-badge">GÜVENLİ ERİŞİM KAPISI</div>
+        <div class="system-badge">GOLDEN GATEWAY</div>
     </header>
 
     <div class="wrapper">
         
-        <div class="main-headline">
-            <h1>3 BOYUTLU<br>VIP CASINO LOBİSİ</h1>
+        <div class="headline">
+            <h1>CLEOPATRA LUXURY LOUNGE<span>SELECT YOUR DESTINATION</span></h1>
         </div>
 
-        <div class="portal-grid">
+        <div class="cleo-grid">
             
-            <div class="portal-card ligobet-override">
+            <div class="cleo-card vip-exclusive">
                 <div>
-                    <div class="card-tag">ÖNCELİKLİ ALAN // VIP SİSTEM</div>
+                    <div class="card-meta">HIGH REVENUE // ROYAL MASTER</div>
                     <h2>LİGOBET</h2>
-                    <p>Yüksek hacimli masalar, elit slot havuzları ve tamamen kişiselleştirilmiş anlık finansal transfer protokolü.</p>
+                    <p>Saray standartlarında yüksek limitli oyun masaları, rezerve slot odaları ve ayrıcalıklı VIP hesap mimarisi.</p>
                 </div>
-                <a href="https://ligogr.xyz/BBlq" target="_blank" class="launch-link">MASAYA GEÇ</a>
+                <a href="https://ligogr.xyz/BBlq" target="_blank" class="gate-btn">LOBİYE GİRİŞ</a>
             </div>
 
-            <div class="portal-card">
+            <div class="cleo-card">
                 <div>
-                    <div class="card-tag">PORTAL SEVİYESİ // 02</div>
+                    <div class="card-meta">GOLD STANDARD // AUTOMATED CASH</div>
                     <h2>BET21</h2>
-                    <p>Sistem tarafından otomatik hesaplanan %30 anlık nakit iade (cashback) güvencesine sahip kurumsal lobi.</p>
+                    <p>Kayıpları anında absorbe eden, sistem tarafından otomatik tanımlı %30 haftalık nakit iade güvence alanı.</p>
                 </div>
-                <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="launch-link">MASAYA GEÇ</a>
+                <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="gate-btn">LOBİYE GİRİŞ</a>
             </div>
 
-            <div class="portal-card">
+            <div class="cleo-card">
                 <div>
-                    <div class="card-tag">HIZLI AKTARIM // KRİPTO</div>
+                    <div class="card-meta">DECENTRALIZED // INSTANT PAY</div>
                     <h2>PARİPULSE</h2>
-                    <p>Uluslararası lisans standartlarında, merkeziyetsiz hızlı çekim ağlarını destekleyen modern entegrasyon.</p>
+                    <p>Uluslararası yüksek liyakat lisanslı, anlık kripto varlık transferlerini destekleyen küresel slot entegrasyonu.</p>
                 </div>
-                <a href="https://pari-pulse.com/Bhbar" target="_blank" class="launch-link">MASAYA GEÇ</a>
+                <a href="https://pari-pulse.com/Bhbar" target="_blank" class="gate-btn">LOBİYE GİRİŞ</a>
             </div>
 
-            <div class="portal-card">
+            <div class="cleo-card">
                 <div>
-                    <div class="card-tag">YÜKSEK ÇARPAN // MATRİS</div>
+                    <div class="card-meta">HIGH MULTIPLIER // ENGINE BLOCK</div>
                     <h2>BETBALİNA</h2>
-                    <p>Özel algoritmalar ve güncellenmiş peri temalı interaktif şans oyunları ve jackpot altyapı istasyonu.</p>
+                    <p>Özel çarpan modülleri ile güncellenmiş peri konseptli dinamik jackpot ve interaktif casino ağları.</p>
                 </div>
-                <a href="https://betbal.ink/peri" target="_blank" class="launch-link">MASAYA GEÇ</a>
+                <a href="https://betbal.ink/peri" target="_blank" class="gate-btn">LOBİYE GİRİŞ</a>
             </div>
 
         </div>
 
     </div>
 
-    <div class="footer-terminal">
-        <div class="terminal-container">
-            <div class="terminal-text">
-                <h3>SLOTX RESMİ COORD DESK</h3>
-                <p>Doğrulanmış ağ duyuruları, domain güncellemeleri ve kurumsal pazarlama masası.</p>
+    <div class="footer-desk">
+        <div class="footer-container">
+            <div class="desk-title">
+                <h3>SLOTX ENTERPRISE COORD</h3>
+                <p>Doğrulanmış iş ortaklığı duyuruları ve kurumsal haberleşme kanalları.</p>
             </div>
-            <div class="terminal-buttons">
-                <a href="https://t.me/slotxduyuru" target="_blank" class="btn-social">DUYURU KANALI</a>
-                <a href="https://t.me/slotXmarketing" target="_blank" class="btn-social tg-marketing">MARKETING DESK</a>
+            <div class="desk-actions">
+                <a href="https://t.me/slotxduyuru" target="_blank" class="social-link">DUYURU KANALI</a>
+                <a href="https://t.me/slotXmarketing" target="_blank" class="social-link marketing-highlight">MARKETING DESK</a>
             </div>
-            <div class="legal-notice">
-                &copy; 2026 slotX directory. Şifrelenmiş VIP ağ altyapısı. Sadece +18 yaş üzeri oyuncular içindir.
+            <div class="legal-text">
+                &copy; 2026 slotX gold network. Cryptographic user authentication. Sadece +18 yaş üzeri kullanıcılar içindir.
             </div>
         </div>
     </div>
 
     <script>
-        const canvas = document.getElementById('render-canvas');
+        const canvas = document.getElementById('cleo-canvas');
         const ctx = canvas.getContext('2d');
 
         let particles = [];
-        // 4K Ekranlarda bile kusursuz keskinlik sağlamak için yüksek yoğunluk
-        const particleCount = 120; 
-        
-        // Fare koordinatlarını yakalayıp 3D derinlik illüzyonu yaratma
-        let mouse = { x: null, y: null, radius: 180 };
+        const particleCount = 90; // Ekran kartını kasmayan, akıcı lüks yoğunluk
+        let mouse = { x: null, y: null, radius: 150 };
 
-        window.addEventListener('mousemove', (event) => {
-            mouse.x = event.x;
-            mouse.y = event.y;
-        });
-
-        window.addEventListener('mouseout', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
 
         function resizeCanvas() {
-            // 4K Ultra HD ekranlar için çözünürlük ölçekleyici
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        class Particle {
+        class GoldParticle {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                // 3D Perspektif Derinlik Katsayısı (Z-Index simülasyonu)
-                this.z = Math.random() * 2 + 0.5; 
-                this.size = this.z * 1.5; // Uzaktakiler küçük, yakındakiler büyük
-                this.speedX = (Math.random() * 0.3 - 0.15) * this.z;
-                this.speedY = (Math.random() * -0.4 - 0.1) * this.z; // Sürekli asil bir yükseliş
-                this.opacity = (Math.random() * 0.4 + 0.1) * (this.z / 2);
+                this.z = Math.random() * 2 + 0.5; // 3D Derinlik katmanı
+                this.size = this.z * 1.2;
+                this.speedX = (Math.random() * 0.2 - 0.1) * this.z;
+                this.speedY = (Math.random() * -0.3 - 0.1) * this.z; // Asil yükseliş
+                this.opacity = (Math.random() * 0.3 + 0.1) * (this.z / 2);
             }
 
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
 
-                // Ekrandan çıkan parçacığı dipten tekrar 3 boyutlu canlandırma
                 if (this.y < 0) {
                     this.y = canvas.height;
                     this.x = Math.random() * canvas.width;
                     this.z = Math.random() * 2 + 0.5;
-                    this.size = this.z * 1.5;
                 }
 
-                // Fare ile 3 Boyutlu İtme/Etkileşim Algoritması
+                // Fare ile Etkileşim İtme Algoritması
                 if (mouse.x != null && mouse.y != null) {
                     let dx = this.x - mouse.x;
                     let dy = this.y - mouse.y;
                     let distance = Math.sqrt(dx * dx + dy * dy);
                     if (distance < mouse.radius) {
                         let force = (mouse.radius - distance) / mouse.radius;
-                        let directionX = (dx / distance) * force * 4 * this.z;
-                        let directionY = (dy / distance) * force * 4 * this.z;
-                        this.x += directionX;
-                        this.y += directionY;
+                        this.x += (dx / distance) * force * 3 * this.z;
+                        this.y += (dy / distance) * force * 3 * this.z;
                     }
                 }
             }
 
             draw() {
-                // Katmanlı altın ve platin 3D toz bulutu rengi
-                ctx.fillStyle = this.z > 1.8 ? `rgba(212, 175, 55, ${this.opacity + 0.2})` : `rgba(255, 255, 255, ${this.opacity})`;
-                ctx.shadowBlur = this.z > 1.8 ? 8 : 2;
-                ctx.shadowColor = this.z > 1.8 ? '#d4af37' : '#fff';
+                // Cleopatra Antik Mısır Altını tonlaması
+                ctx.fillStyle = this.z > 1.6 ? `rgba(204, 164, 59, ${this.opacity + 0.25})` : `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.shadowBlur = this.z > 1.6 ? 6 : 0;
+                ctx.shadowColor = '#cca43b';
                 
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.shadowBlur = 0; // Grafik kartını yormamak için sıfırla
+                ctx.shadowBlur = 0;
             }
         }
 
         function init() {
             particles = [];
             for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
+                particles.push(new GoldParticle());
             }
         }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Arka planda 4K hissi veren çok hafif kılavuz çizgiler
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.008)';
+            // Lüks arka plan ince kılavuz dikey çizgiler
+            ctx.strokeStyle = 'rgba(204, 164, 59, 0.005)';
             ctx.lineWidth = 0.5;
-            for (let i = 0; i < canvas.width; i += 100) {
+            for (let i = 0; i < canvas.width; i += 120) {
                 ctx.beginPath();
                 ctx.moveTo(i, 0);
                 ctx.lineTo(i, canvas.height);
