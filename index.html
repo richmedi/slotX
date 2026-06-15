@@ -1,339 +1,220 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>slotX - Resmi Giriş Adresi</title>
-    <style>
-        /* Cleopatra Casino Teması Genel Ayarları */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', Arial, sans-serif;
-        }
-
-        body {
-            background: #0d0614 url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?q=80&w=1600&auto=format&fit=crop') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Arka planı karartmak ve casino atmosferi vermek için overlay */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(180deg, rgba(13, 6, 20, 0.9) 0%, rgba(20, 5, 35, 0.95) 100%);
-            z-index: 1;
-        }
-
-        /* Tüm içerikleri üste çıkarma */
-        .main-wrapper {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 550px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Üst Altın Şerit ve Logo */
-        header {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 25px;
-            width: 100%;
-        }
-
-        .logo {
-            font-size: 3.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #fff;
-            background: linear-gradient(to bottom, #ffe57f 0%, #ffc107 50%, #b38600 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0px 0px 15px rgba(255, 193, 7, 0.6));
-            display: inline-block;
-        }
-
-        .verified-badge {
-            background: #ffc107;
-            color: #000;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 4px 12px;
-            border-radius: 50px;
-            display: inline-block;
-            margin-top: 5px;
-            letter-spacing: 1px;
-            box-shadow: 0 0 10px rgba(255,193,7,0.4);
-        }
-
-        /* Canlı Uyarı Paneli */
-        .alert-bar {
-            background: rgba(255, 0, 85, 0.2);
-            border: 1px solid #ff0055;
-            color: #ffb3cc;
-            width: 100%;
-            border-radius: 12px;
-            padding: 12px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.2);
-        }
-
-        /* Casino Giriş Buton Listesi */
-        .casino-grid {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        /* Örnek Sitedeki Gibi Büyük Görkemli Butonlar */
-        .casino-card {
-            width: 100%;
-            height: 85px;
-            border-radius: 16px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 25px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-
-        .casino-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%);
-            z-index: 1;
-        }
-
-        .card-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .card-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
-
-        .card-sub {
-            font-size: 0.75rem;
-            color: #e0e0e0;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-top: 2px;
-        }
-
-        .play-btn {
-            position: relative;
-            z-index: 2;
-            background: #fff;
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            transition: 0.2s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .casino-card:hover {
-            transform: scale(1.02);
-        }
-
-        .casino-card:hover .play-btn {
-            background: #000;
-            color: #fff;
-        }
-
-        /* Sitelere Özel Renk ve Tasarımlar (Cleopatra Stili) */
-        .ligobet {
-            background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=400&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            border: 2px solid #ffcc00;
-        }
-        .ligobet .card-title { color: #ffcc00; }
-        .ligobet:hover { box-shadow: 0 0 20px rgba(255, 204, 0, 0.5); }
-
-        .bet21 {
-            background-image: url('https://images.unsplash.com/photo-1606167668584-78701c57f13d?q=80&w=400&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            border: 2px solid #00c6ff;
-        }
-        .bet21 .card-title { color: #00c6ff; }
-        .bet21:hover { box-shadow: 0 0 20px rgba(0, 198, 255, 0.5); }
-
-        .paripulse {
-            background-image: url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=400&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            border: 2px solid #e040fb;
-        }
-        .paripulse .card-title { color: #e040fb; }
-        .paripulse:hover { box-shadow: 0 0 20px rgba(224, 64, 251, 0.5); }
-
-        .betbalina {
-            background-image: url('https://images.unsplash.com/photo-1541252260730-0412e8e2108e?q=80&w=400&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            border: 2px solid #00ff87;
-        }
-        .betbalina .card-title { color: #00ff87; }
-        .betbalina:hover { box-shadow: 0 0 20px rgba(0, 255, 135, 0.5); }
-
-
-        /* İletişim & Sosyal Medya Alt Alanı */
-        .social-container {
-            width: 100%;
-            margin-top: 30px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .social-link {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 14px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-align: center;
-            transition: 0.2s;
-        }
-
-        .social-link.duyuru {
-            border-color: #24a1de;
-            color: #64b5f6;
-        }
-
-        .social-link.duyuru:hover {
-            background: #24a1de;
-            color: #fff;
-        }
-
-        .social-link.destek {
-            border-color: #ff9800;
-            color: #ffb74d;
-        }
-
-        .social-link.destek:hover {
-            background: #ff9800;
-            color: #000;
-        }
-
-        /* Alt Bilgi */
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #756d82;
-            line-height: 1.6;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="main-wrapper">
-        
-        <!-- Üst Alan ve Logo -->
-        <header>
-            <div class="logo">slotX</div>
-            <br>
-            <span class="verified-badge">✓ RESMİ ORTAKLIK SAYFASI</span>
-        </header>
-
-        <!-- Canlı Duyuru Paneli -->
-        <div class="alert-bar">
-            ⚠️ Dolandırıcılardan korunmak için yalnızca bu sayfadaki butonları kullanınız!
-        </div>
-
-        <!-- Aktif Giriş Linkleri Kartları -->
-        <div class="casino-grid">
-            
-            <!-- LİGOBET -->
-            <a href="https://ligogr.xyz/BBlq" target="_blank" class="casino-card ligobet">
-                <div class="card-content">
-                    <div class="card-title">LİGOBET VIP</div>
-                    <div class="card-sub">Anında Güvenli Giriş</div>
-                </div>
-                <div class="play-btn">GİRİŞ YAP</div>
-            </a>
-
-            <!-- BET21 -->
-            <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="casino-card bet21">
-                <div class="card-content">
-                    <div class="card-title">BET21</div>
-                    <div class="card-sub">%30 Cashback Avantajı</div>
-                </div>
-                <div class="play-btn">GİRİŞ YAP</div>
-            </a>
-
-            <!-- PARİPULSE -->
-            <a href="https://pari-pulse.com/Bhbar" target="_blank" class="casino-card paripulse">
-                <div class="card-content">
-                    <div class="card-title">PARİPULSE</div>
-                    <div class="card-sub">Resmi Güncel Adres</div>
-                </div>
-                <div class="play-btn">GİRİŞ YAP</div>
-            </a>
-
-            <!-- BETBALİNA -->
-            <a href="https://betbal.ink/peri" target="_blank" class="casino-card betbalina">
-                <div class="card-content">
-                    <div class="card-title">BETBALİNA</div>
-                    <div class="card-sub">Kesintisiz Slot Erişimi</div>
-                </div>
-                <div class="play-btn">GİRİŞ YAP</div>
-            </a>
-
-        </div>
-
-        <!-- Alt İletişim / Telegram Alanı -->
-        <div class="social-container">
-            <a href="https://t.me/slotxduyuru" target="_blank" class="social-link duyuru">
-                📢 Resmi Duyuru
-            </a>
-            <a href="https://t.me/slotXmarketing" target="_blank" class="social-link destek">
-                🤝 Marketing / İletişim
-            </a>
-        </div>
-
-        <!-- Footer Bilgisi -->
-        <footer>
-            <p>© 2026 slotX Giriş. Tüm hakları saklıdır.</p>
-            <p>Sorumlu oyun kurallarına uyunuz. 18+</p>
-        </footer>
-
-    </div>
-
-</body>
-</html>
+aLink
+: 
+""
+accessKey
+: 
+""
+attributeStyleMap
+: 
+StylePropertyMap {size: 0}
+attributes
+: 
+NamedNodeMap {length: 0}
+autocapitalize
+: 
+""
+autofocus
+: 
+false
+background
+: 
+""
+baseURI
+: 
+"https://cleopatracasinoresmi.com/"
+bgColor
+: 
+""
+childElementCount
+: 
+7
+childNodes
+: 
+NodeList(14) [text, div.sandstorm, text, div#loader.loader.hide, text, aside.palace-nav, text, main.page, text, div.mobile-dock, text, script, text, veepn-lock-screen]
+children
+: 
+HTMLCollection(7) [div.sandstorm, div#loader.loader.hide, aside.palace-nav, main.page, div.mobile-dock, script, veepn-lock-screen, loader: div#loader.loader.hide]
+classList
+: 
+DOMTokenList [value: '']
+className
+: 
+""
+clientHeight
+: 
+5990
+clientLeft
+: 
+0
+clientTop
+: 
+0
+clientWidth
+: 
+796
+contentEditable
+: 
+"inherit"
+currentCSSZoom
+: 
+1
+customElementRegistry
+: 
+CustomElementRegistry {}
+dataset
+: 
+DOMStringMap {}
+dir
+: 
+""
+draggable
+: 
+false
+elementTiming
+: 
+""
+enterKeyHint
+: 
+""
+firstChild
+: 
+text
+firstElementChild
+: 
+div.sandstorm
+hidden
+: 
+false
+id
+: 
+""
+inert
+: 
+false
+innerHTML
+: 
+"\n  <div class=\"sandstorm\"></div>\n  <div class=\"loader hide\" id=\"loader\">\n    <div class=\"scarab-loader\">\n      <img src=\"assets/cleopatra-logo.png\" alt=\"Cleopatra Casino\">\n      <span>ROYAL NILE</span>\n      <b>Cleopatra Casino</b>\n    </div>\n  </div>\n\n  <aside class=\"palace-nav\">\n    <a class=\"palace-brand\" href=\"#giris\">\n      <img src=\"assets/cleopatra-logo.png\" alt=\"Cleopatra\">\n      <b>Cleopatra</b>\n      <span>Royal Nile</span>\n    </a>\n    <nav>\n      <a href=\"#giris\"><em>𓉐</em> Giriş</a>\n      <a href=\"#kanallar\"><em>𓂀</em> Resmi Ağ</a>\n      <a href=\"#sponsorlar\"><em>𓋹</em> Sponsorlar</a>\n      <a href=\"#nile\"><em>𓇳</em> Premium Akış</a>\n      <a href=\"#iletisim\"><em>𓃭</em> İletişim</a>\n    </nav>\n    <a class=\"side-contact\" href=\"https://t.me/Saltanatmarketingx\">Telegram</a>\n  </aside>\n\n  <main class=\"page\">\n    <section class=\"gate-hero\" id=\"giris\">\n      <div class=\"obelisk left\"></div>\n      <div class=\"obelisk right\"></div>\n\n      <div class=\"hero-copy\">\n        <p class=\"eyebrow\">ANTİK MISIR PREMIUM AĞI</p>\n        <h1>Cleopatra<br>Casino</h1>\n        <p class=\"lead\">Cleopatra Casino üyeleri için güncel bağlantılar, duyuru kanalları ve premium sponsor fırsatları tek bir elit merkezde toplandı.</p>\n        <div class=\"hero-actions\">\n          <a class=\"btn primary\" href=\"https://t.me/casinocleopatrax\">Sohbete Katıl</a>\n          <a class=\"btn outline\" href=\"#sponsorlar\">Sponsor Vitrinini Gör</a>\n        </div>\n      </div>\n\n      <div class=\"sun-disc\">\n        <div class=\"sun-ring\" style=\"transform: translate(5.9852px, -1.17526px);\">\n          <img src=\"assets/cleopatra-hero.png\" alt=\"Cleopatra Casino\">\n        </div>\n      </div>\n\n      <div class=\"hieroglyph-band\">\n        <span>𓂀</span><span>𓆣</span><span>𓋹</span><span>𓃭</span><span>𓆃</span><span>𓇳</span><span>𓉐</span>\n      </div>\n    </section>\n\n    <section class=\"portal-grid\" id=\"kanallar\">\n      <div class=\"portal-head\">\n        <span>Resmi Ağ</span>\n        <h2>Cleopatra Resmi Bağlantılar</h2>\n        <p>Cleopatra ağına ait resmi duyuru, sohbet, kod ve sosyal medya bağlantıları üyelerimizin güvenli ve hızlı erişimi için tek noktada düzenlendi.</p>\n      </div>\n\n      <div class=\"portal-wrap\">\n        <a class=\"portal tall\" href=\"https://t.me/casinocleopatrax\">\n          <span>💬</span>\n          <b>Cleopatra Sohbet</b>\n          <small>Topluluk kapısı</small>\n        </a>\n        <a class=\"portal\" href=\"https://t.me/cleopatraduyuru\">\n          <span>🏛</span>\n          <b>Duyuru Kanalı</b>\n          <small>Resmi duyurular</small>\n        </a>\n        <a class=\"portal\" href=\"https://t.me/cleopatrakod\">\n          <span>🎁</span>\n          <b>Kod Kanalı</b>\n          <small>Güncel kodlar</small>\n        </a>\n        <a class=\"portal\" href=\"https://www.instagram.com/cleopatracasiino/\">\n          <span>📸</span>\n          <b>Instagram</b>\n          <small>Sosyal hesap</small>\n        </a>\n        <a class=\"portal\" href=\"https://www.youtube.com/@Cleopatracasino\">\n          <span>▶️</span>\n          <b>YouTube</b>\n          <small>Video içerikler</small>\n        </a>\n      </div>\n    </section>\n\n    <section class=\"temple-sponsors\" id=\"sponsorlar\">\n      <div class=\"temple-title\">\n        <span>Cleopatra Premium Sponsor Alanı</span>\n        <h2>Premium Sponsor Geçitleri</h2>\n        <p>Üyeler güncel sponsor bağlantılarına hızlı ulaşırken, markalar Cleopatra Casino’nun elit vitrininde güçlü görünürlük kazanır.</p>\n      </div>\n\n      <div class=\"pharaoh-stage\">\n        <div class=\"pyramid\">\n          <div class=\"pyramid-face\"></div>\n          <div class=\"pyramid-text\">\n            <span>Ana Sponsor</span>\n            <h3>Ana Sponsor Vitrini</h3>\n            <p>Cleopatra Casino’nun en güçlü görünürlük alanı ana sponsor markası için ayrılmıştır.
+Premium konum, yüksek dikkat ve özel marka sunumu sağlar.</p>\n            <em>Şu an boş</em>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"nile-river\">\n        <div class=\"river-line\"></div>\n\n          <a class=\"river-item item-1\" href=\"https://srv258.netcacheSB140258.net/_kW4z3qTP2ziMa_35-Spy2WNd7ZgqdRLk/1/\">\n            <div class=\"glyph\">𓂀</div>\n            <div class=\"river-copy\">\n              <span>Premium Sponsor</span>\n              <strong>Slotbon</strong>\n              <small>Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.</small>\n            </div>\n            <div class=\"river-cta\">Giriş</div>\n          </a>\n\n          <a class=\"river-item item-2\" href=\"https://zaplypulse.com/_4sJeFLZc2mV7RPVqra1Uc2Nd7ZgqdRLk/1/?pg=1\">\n            <div class=\"glyph\">𓆣</div>\n            <div class=\"river-copy\">\n              <span>Premium Sponsor</span>\n              <strong>Spino</strong>\n              <small>Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.</small>\n            </div>\n            <div class=\"river-cta\">Giriş</div>\n          </a>\n\n          <a class=\"river-item item-3\" href=\"https://zaplyedge.com/_kW4z3qTP2zhw9PUHBV5BDWNd7ZgqdRLk/1/\">\n            <div class=\"glyph\">𓋹</div>\n            <div class=\"river-copy\">\n              <span>Premium Sponsor</span>\n              <strong>Jetbet</strong>\n              <small>Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.</small>\n            </div>\n            <div class=\"river-cta\">Giriş</div>\n          </a>\n\n          <a class=\"river-item item-4\" href=\"https://zaplyopen.com/_kW4z3qTP2zj2Bt63Rqn6jGNd7ZgqdRLk/1/\">\n            <div class=\"glyph\">𓃭</div>\n            <div class=\"river-copy\">\n              <span>Premium Sponsor</span>\n              <strong>Rexbet</strong>\n              <small>Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.</small>\n            </div>\n            <div class=\"river-cta\">Giriş</div>\n          </a>\n\n          <a class=\"river-item item-5\" href=\"https://cdn281.relayhubHO40281.net/_kW4z3qTP2ziU9J4xpxpxGmNd7ZgqdRLk/1/\">\n            <div class=\"glyph\">𓆃</div>\n            <div class=\"river-copy\">\n              <span>Premium Sponsor</span>\n              <strong>Hovarda</strong>\n              <small>Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.</small>\n            </div>\n            <div class=\"river-cta\">Giriş</div>\n          </a>\n\n          <a class=\"river-item item-6\" href=\"https://cdn148.datapathDV90148.com/_kW4z3qTP2zgyoem8gnKHH2Nd7ZgqdRLk/1/\">\n            <div class=\"glyph\">𓇳</div>\n            <div class=\"river-copy\">\n              <span>Premium Sponsor</span>\n              <strong>Davegas</strong>\n              <small>Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.</small>\n            </div>\n            <div class=\"river-cta\">Giriş</div>\n          </a>\n\n      </div>\n    </section>\n\n    <section class=\"nile-section\" id=\"nile\">\n      <div class=\"nile-card\">\n        <span class=\"big-glyph\">𓇳</span>\n        <div>\n          <p class=\"eyebrow\">CLEOPATRA PREMIUM AKIŞI</p>\n          <h2>Üyeler ve sponsorlar için elit vitrin</h2>\n          <p>Cleopatra Casino, üyelerine güncel bağlantıları hızlı sunarken sponsor markalara prestijli, net ve dikkat çekici bir reklam vitrini sağlar.</p>\n        </div>\n        <a class=\"btn primary\" href=\"https://t.me/casinocleopatrax\">Sohbete Git</a>\n      </div>\n    </section>\n\n    <section class=\"contact-panel\" id=\"iletisim\">\n      <div class=\"contact-inner\">\n        <span>𓃭</span>\n        <h2>Cleopatra Telegram İletişim</h2>\n        <p>Sponsor başvurusu, reklam alanı, marka görünürlüğü ve iş birliği talepleri için resmi Telegram iletişim kanalımız üzerinden ulaşabilirsiniz.</p>\n        <a class=\"btn primary\" href=\"https://t.me/Saltanatmarketingx\">Telegram ile İletişim</a>\n      </div>\n    </section>\n\n    <footer>\n      <b>Cleopatra Casino</b>\n      <span>Premium sponsor vitrini ve resmi bağlantı ağı</span>\n    </footer>\n  </main>\n\n  <div class=\"mobile-dock\">\n    <a href=\"https://t.me/casinocleopatrax\">Sohbet</a>\n    <a href=\"#sponsorlar\">Sponsor</a>\n    <a href=\"https://t.me/Saltanatmarketingx\">İletişim</a>\n  </div>\n\n  <script src=\"script.js\"></script>\n\n\n<veepn-lock-screen><style>@font-face{font-family:FigtreeVF;src:url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format(\"woff2 supports variations\"),url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format(\"woff2-variations\");font-weight:100 1000;font-display:swap}</style></veepn-lock-screen>"
+innerText
+: 
+"ROYAL NILE\nCleopatra Casino\n\nANTİK MISIR PREMIUM AĞI\n\nCleopatra\nCasino\n\nCleopatra Casino üyeleri için güncel bağlantılar, duyuru kanalları ve premium sponsor fırsatları tek bir elit merkezde toplandı.\n\nSohbete Katıl\nSponsor Vitrinini Gör\n𓂀\n𓆣\n𓋹\n𓃭\n𓆃\n𓇳\n𓉐\nRESMİ AĞ\nCleopatra Resmi Bağlantılar\n\nCleopatra ağına ait resmi duyuru, sohbet, kod ve sosyal medya bağlantıları üyelerimizin güvenli ve hızlı erişimi için tek noktada düzenlendi.\n\n💬\nCleopatra Sohbet\nTopluluk kapısı\n🏛\nDuyuru Kanalı\nResmi duyurular\n🎁\nKod Kanalı\nGüncel kodlar\n📸\nInstagram\nSosyal hesap\n▶️\nYouTube\nVideo içerikler\nCLEOPATRA PREMİUM SPONSOR ALANI\nPremium Sponsor Geçitleri\n\nÜyeler güncel sponsor bağlantılarına hızlı ulaşırken, markalar Cleopatra Casino’nun elit vitrininde güçlü görünürlük kazanır.\n\nANA SPONSOR\nAna Sponsor Vitrini\n\nCleopatra Casino’nun en güçlü görünürlük alanı ana sponsor markası için ayrılmıştır. Premium konum, yüksek dikkat ve özel marka sunumu sağlar.\n\nŞu an boş\n𓂀\nPREMİUM SPONSOR\nSlotbon\nCleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\nGiriş\n𓆣\nPREMİUM SPONSOR\nSpino\nCleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\nGiriş\n𓋹\nPREMİUM SPONSOR\nJetbet\nCleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\nGiriş\n𓃭\nPREMİUM SPONSOR\nRexbet\nCleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\nGiriş\n𓆃\nPREMİUM SPONSOR\nHovarda\nCleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\nGiriş\n𓇳\nPREMİUM SPONSOR\nDavegas\nCleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\nGiriş\n𓇳\n\nCLEOPATRA PREMIUM AKIŞI\n\nÜyeler ve sponsorlar için elit vitrin\n\nCleopatra Casino, üyelerine güncel bağlantıları hızlı sunarken sponsor markalara prestijli, net ve dikkat çekici bir reklam vitrini sağlar.\n\nSohbete Git\n𓃭\nCleopatra Telegram İletişim\n\nSponsor başvurusu, reklam alanı, marka görünürlüğü ve iş birliği talepleri için resmi Telegram iletişim kanalımız üzerinden ulaşabilirsiniz.\n\nTelegram ile İletişim\nCleopatra Casino\nPremium sponsor vitrini ve resmi bağlantı ağı\nSohbet\nSponsor\nİletişim"
+inputMode
+: 
+""
+isConnected
+: 
+true
+isContentEditable
+: 
+false
+lang
+: 
+""
+lastChild
+: 
+veepn-lock-screen
+lastElementChild
+: 
+veepn-lock-screen
+link
+: 
+""
+localName
+: 
+"body"
+namespaceURI
+: 
+"http://www.w3.org/1999/xhtml"
+nodeName
+: 
+"BODY"
+nodeType
+: 
+1
+nonce
+: 
+""
+offsetHeight
+: 
+5990
+offsetLeft
+: 
+0
+offsetTop
+: 
+0
+offsetWidth
+: 
+796
+outerHTML
+:
+"<body>\n  <div class=\"sandstorm\"></div>\n  <div class=\"loader hide\" id=\"loader\">\n    <div class=\"scarab-loader\">\n      <img src=\"assets/cleopatra-logo.png\" alt=\"Cleopatra Casino\">\n      <span>ROYAL NILE</span>\n      <b>Cleopatra Casino</b>\n    </div>\n  </div>\n\n  <aside class=\"palace-nav\">\n    <a class=\"palace-brand\" href=\"#giris\">\n      <img src=\"assets/cleopatra-logo.png\" alt=\"Cleopatra\">\n      <b>Cleopatra</b>\n      <span>Royal Nile</span>\n    </a>\n    <nav>\n      <a href=\"#giris\"><em>𓉐</em> Giriş</a>\n      <a href=\"#kanallar\"><em>𓂀</em> Resmi Ağ</a>\n      <a href=\"#sponsorlar\"><em>𓋹</em> Sponsorlar</a>\n      <a href=\"#nile\"><em>𓇳</em> Premium Akış</a>\n      <a href=\"#iletisim\"><em>𓃭</em> İletişim</a>\n    </nav>\n    <a class=\"side-contact\" href=\"https://t.me/Saltanatmarketingx\">Telegram</a>\n  </aside>\n\n  <main class=\"page\">\n    <section class=\"gate-hero\" id=\"giris\">\n      <div class=\"obelisk left\"></div>\n      <div class=\"obelisk right\"></div>\n\n      <div class=\"hero-copy\">\n        <p class=\"eyebrow\">ANTİK MISIR PREMIUM AĞI</p>\n        <h1>Cleopatra<br>Casino</h1>\n        <p class=\"lead\">Cleopatra Casino üyeleri için güncel bağlantılar, duyuru kanalları ve premium sponsor fırsatları tek bir elit merkezde toplandı.</p>\n        <div class=\"hero-actions\">\n          <a class=\"btn primary\" href=\"https://t.me/casinocleopatrax\">Sohbete Katıl</a>\n          <a class=\"btn outline\" href=\"#sponsorlar\">Sponsor Vitrinini Gör</a>\n        </div>\n      </div>\n\n      <div class=\"sun-disc\">\n        <div class=\"sun-ring\" style=\"transform: translate(5.9852px, -1.17526px);\">\n          <img src=\"assets/cleopatra-hero.png\" alt=\"Cleopatra Casino\">\n        </div>\n      </div>\n\n      <div class=\"hieroglyph-band\">\n        <span>𓂀</span><span>𓆣</span><span>𓋹</span><span>𓃭</span><span>𓆃</span><span>𓇳</span><span>𓉐</span>\n      </div>\n    </section>\n\n    <section class=\"portal-grid\" id=\"kanallar\">\n      <div class=\"portal-head\">\n        <span>Resmi Ağ</span>\n        <h2>Cleopatra Resmi Bağlantılar</h2>\n        <p>Cleopatra ağına ait resmi duyuru, sohbet, kod ve sosyal medya bağlantıları üyelerimizin güvenli ve hızlı erişimi için tek noktada düzenlendi.</p>\n      </div>\n\n      <div class=\"portal-wrap\">\n        <a class=\"portal tall\" href=\"https://t.me/casinocleopatrax\">\n          <span>💬</span>\n          <b>Cleopatra Sohbet</b>\n          <small>Topluluk kapısı</small>\n        </a>\n        <a class=\"portal\" href=\"https://t.me/cleopatraduyuru\">\n          <span>🏛</span>\n          <b>Duyuru Kanalı</b>\n          <small>Resmi duyurular</small>\n        </a>\n        <a class=\"portal\" href=\"https://t.me/cleopatrakod\">\n          <span>🎁</span>\n          <b>Kod Kanalı</b>\n          <small>Güncel kodlar</small>\n        </a>\n        <a class=\"portal\" href=\"https://www.instagram.com/cleopatracasiino/\">\n          <span>📸</span>\n          <b>Instagram</b>\n          <small>Sosyal hesap</small>\n        </a>\n        <a class=\"portal\" href=\"https://www.youtube.com/@Cleopatracasino\">\n          <span>▶️</span>\n          <b>YouTube</b>\n          <small>Video içerikler</small>\n        </a>\n      </div>\n    </section>\n\n    <section class=\"temple-sponsors\" id=\"sponsorlar\">\n      <div class=\"temple-title\">\n        <span>Cleopatra Premium Sponsor Alanı</span>\n        <h2>Premium Sponsor Geçitleri</h2>\n        <p>Üyeler güncel sponsor bağlantılarına hızlı ulaşırken, markalar Cleopatra Casino’nun elit vitrininde güçlü görünürlük kazanır.</p>\n      </div>\n\n      <div class=\"pharaoh-stage\">\n        <div class=\"pyramid\">\n          <div class=\"pyramid-face\"></div>\n          <div class=\"pyramid-text\">\n            <span>Ana Sponsor</span>\n            <h3>Ana Sponsor Vitrini</h3>\n            <p>Cleopatra Casino’nun en güçlü görünürlük alanı ana sponsor markası için ayrılmıştır. Premium konum, yüksek dikkat ve özel marka sunumu sağlar.</p>\n            <em>Şu an boş</em>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"nile-river\">\n        <div class=\"river-line\"></div>\n\n          <a class=\"river-item item-1\" href=\"https://srv258.netcacheSB140258.net/_kW4z3qTP2ziMa_35-Spy2WNd7ZgqdRLk/1/\">\n            <div class=\"glyph\">𓂀</div>\n            <div class=\"river-copy\">\n              <span>Premium Sponsor</span>\n              <strong>Slotbon</strong>\n              <small>Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.</small>\n            </div>\n            <div class=\"river-cta\">Giriş</div>\n          </a>\n\n          <a class=\"river-item item-2\" href=\"https://zaplypulse.com/_4sJeFLZc2mV7RPVqra1Uc2Nd7ZgqdRLk/1/?pg=1\">\n            <div class=\"glyph\">𓆣</div>\n            <div class=\"river-copy\">\n              <span>Premium Sponsor</span>\n              <strong>Spino</strong>\n              <small>Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.</small>\n            </div>\n            <div class=\"river-cta\">Giriş</div>\n          </a>\n\n          <a class=\"river-item item-3\" href=\"https://zaplyedge.com/_kW4z3qTP2zhw9PUHBV5BDWNd7ZgqdRLk/1/\">\n            <div class=\"glyph\">𓋹</div>\n            <div class=\"river-copy\">\n              <span>Premium Sponsor</span>\n              <strong>Jetbet</strong>\n              <small>Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.</small>\n            </div>\n            <div class=\"river-cta\">Giriş</div>\n          </a>\n\n          <a class=\"river-item item-4\" href=\"https://zaplyopen.com/_kW4z3qTP2zj2Bt63Rqn6jGNd7ZgqdRLk/1/\">\n            <div class=\"glyph\">𓃭</div>\n            <div class=\"river-copy\">\n              <span>Premium Sponsor</span>\n              <strong>Rexbet</strong>\n              <small>Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.</small>\n            </div>\n            <div class=\"river-cta\">Giriş</div>\n          </a>\n\n          <a class=\"river-item item-5\" href=\"https://cdn281.relayhubHO40281.net/_kW4z3qTP2ziU9J4xpxpxGmNd7ZgqdRLk/1/\">\n            <div class=\"glyph\">𓆃</div>\n            <div class=\"river-copy\">\n              <span>Premium Sponsor</span>\n              <strong>Hovarda</strong>\n              <small>Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.</small>\n            </div>\n            <div class=\"river-cta\">Giriş</div>\n          </a>\n\n          <a class=\"river-item item-6\" href=\"https://cdn148.datapathDV90148.com/_kW4z3qTP2zgyoem8gnKHH2Nd7ZgqdRLk/1/\">\n            <div class=\"glyph\">𓇳</div>\n            <div class=\"river-copy\">\n              <span>Premium Sponsor</span>\n              <strong>Davegas</strong>\n              <small>Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.</small>\n            </div>\n            <div class=\"river-cta\">Giriş</div>\n          </a>\n\n      </div>\n    </section>\n\n    <section class=\"nile-section\" id=\"nile\">\n      <div class=\"nile-card\">\n        <span class=\"big-glyph\">𓇳</span>\n        <div>\n          <p class=\"eyebrow\">CLEOPATRA PREMIUM AKIŞI</p>\n          <h2>Üyeler ve sponsorlar için elit vitrin</h2>\n          <p>Cleopatra Casino, üyelerine güncel bağlantıları hızlı sunarken sponsor markalara prestijli, net ve dikkat çekici bir reklam vitrini sağlar.</p>\n        </div>\n        <a class=\"btn primary\" href=\"https://t.me/casinocleopatrax\">Sohbete Git</a>\n      </div>\n    </section>\n\n    <section class=\"contact-panel\" id=\"iletisim\">\n      <div class=\"contact-inner\">\n        <span>𓃭</span>\n        <h2>Cleopatra Telegram İletişim</h2>\n        <p>Sponsor başvurusu, reklam alanı,marka görünürlüğü ve iş birliği talepleri için resmi Telegram iletişim kanalımız üzerinden ulaşabilirsiniz.</p>\n        <a class=\"btn primary\" href=\"https://t.me/Saltanatmarketingx\">Telegram ile İletişim</a>\n      </div>\n    </section>\n\n    <footer>\n      <b>Cleopatra Casino</b>\n      <span>Premium sponsor vitrini ve resmi bağlantı ağı</span>\n    </footer>\n  </main>\n\n  <div class=\"mobile-dock\">\n    <a href=\"https://t.me/casinocleopatrax\">Sohbet</a>\n    <a href=\"#sponsorlar\">Sponsor</a>\n    <a href=\"https://t.me/Saltanatmarketingx\">İletişim</a>\n  </div>\n\n  <script src=\"script.js\"></script>\n\n\n<veepn-lock-screen><style>@font-face{font-family:FigtreeVF;src:url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format(\"woff2 supports variations\"),url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format(\"woff2-variations\");font-weight:100 1000;font-display:swap}</style></veepn-lock-screen></body>"
+outerText
+: 
+"ROYAL NILE\nCleopatra Casino\n\nANTİK MISIR PREMIUM AĞI\n\nCleopatra\nCasino\n\nCleopatra Casino üyeleri için güncel bağlantılar, duyuru kanalları ve premium sponsor fırsatları tek bir elit merkezde toplandı.\n\nSohbete Katıl\nSponsor Vitrinini Gör\n𓂀\n𓆣\n𓋹\n𓃭\n𓆃\n𓇳\n𓉐\nRESMİ AĞ\nCleopatra Resmi Bağlantılar\n\nCleopatra ağına ait resmi duyuru, sohbet, kod ve sosyal medya bağlantıları üyelerimizin güvenli ve hızlı erişimi için tek noktada düzenlendi.\n\n💬\nCleopatra Sohbet\nTopluluk kapısı\n🏛\nDuyuru Kanalı\nResmi duyurular\n🎁\nKod Kanalı\nGüncel kodlar\n📸\nInstagram\nSosyal hesap\n▶️\nYouTube\nVideo içerikler\nCLEOPATRA PREMİUM SPONSOR ALANI\nPremium Sponsor Geçitleri\n\nÜyeler güncel sponsor bağlantılarına hızlı ulaşırken, markalar Cleopatra Casino’nun elit vitrininde güçlü görünürlük kazanır.\n\nANA SPONSOR\nAna Sponsor Vitrini\n\nCleopatra Casino’nun en güçlü görünürlük alanı ana sponsor markası için ayrılmıştır. Premium konum, yüksek dikkat ve özel marka sunumu sağlar.\n\nŞu an boş\n𓂀\nPREMİUM SPONSOR\nSlotbon\nCleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\nGiriş\n𓆣\nPREMİUM SPONSOR\nSpino\nCleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\nGiriş\n𓋹\nPREMİUM SPONSOR\nJetbet\nCleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\nGiriş\n𓃭\nPREMİUM SPONSOR\nRexbet\nCleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\nGiriş\n𓆃\nPREMİUM SPONSOR\nHovarda\nCleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\nGiriş\n𓇳\nPREMİUM SPONSOR\nDavegas\nCleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\nGiriş\n𓇳\n\nCLEOPATRA PREMIUM AKIŞI\n\nÜyeler ve sponsorlar için elit vitrin\n\nCleopatra Casino, üyelerine güncel bağlantıları hızlı sunarken sponsor markalara prestijli, net ve dikkat çekici bir reklam vitrini sağlar.\n\nSohbete Git\n𓃭\nCleopatra Telegram İletişim\n\nSponsor başvurusu, reklam alanı, marka görünürlüğü ve iş birliği talepleri için resmi Telegram iletişim kanalımız üzerinden ulaşabilirsiniz.\n\nTelegram ile İletişim\nCleopatra Casino\nPremium sponsor vitrini ve resmi bağlantı ağı\nSohbet\nSponsor\nİletişim"
+ownerDocument
+: 
+document
+parentElement
+: 
+html
+parentNode
+: 
+html
+part
+: 
+DOMTokenList [value: '']
+previousElementSibling
+: 
+head
+previousSibling
+: 
+text
+scrollHeight
+: 
+5990
+scrollLeft
+: 
+0
+scrollTop
+: 
+0
+scrollWidth
+: 
+796
+slot
+: 
+""
+spellcheck
+: 
+true
+style
+: 
+CSSStyleDeclaration {accentColor: '', additiveSymbols: '', alignContent: '', alignItems: '', alignSelf: '', …}
+tabIndex
+: 
+-1
+tagName
+: 
+"BODY"
+text
+: 
+""
+textContent
+: 
+"\n  \n  \n    \n      \n      ROYAL NILE\n      Cleopatra Casino\n    \n  \n\n  \n    \n      \n      Cleopatra\n      Royal Nile\n    \n    \n      𓉐 Giriş\n      𓂀 Resmi Ağ\n      𓋹 Sponsorlar\n      𓇳 Premium Akış\n      𓃭 İletişim\n    \n    Telegram\n  \n\n  \n    \n      \n      \n\n      \n        ANTİK MISIR PREMIUM AĞI\n        CleopatraCasino\n        Cleopatra Casino üyeleri için güncel bağlantılar, duyuru kanalları ve premium sponsor fırsatları tek bir elit merkezde toplandı.\n        \n          Sohbete Katıl\n          Sponsor Vitrinini Gör\n        \n      \n\n      \n        \n          \n        \n      \n\n      \n        𓂀𓆣𓋹𓃭𓆃𓇳𓉐\n      \n    \n\n    \n      \n        Resmi Ağ\n        Cleopatra Resmi Bağlantılar\n        Cleopatra ağına ait resmi duyuru, sohbet, kod ve sosyal medya bağlantıları üyelerimizin güvenli ve hızlı erişimi için tek noktada düzenlendi.\n      \n\n      \n        \n          💬\n          Cleopatra Sohbet\n          Topluluk kapısı\n        \n        \n          🏛\n          Duyuru Kanalı\n          Resmi duyurular\n        \n        \n          🎁\n          Kod Kanalı\n          Güncel kodlar\n        \n        \n          📸\n          Instagram\n          Sosyal hesap\n        \n        \n          ▶️\n          YouTube\n          Video içerikler\n        \n      \n    \n\n    \n      \n        Cleopatra Premium Sponsor Alanı\n        Premium Sponsor Geçitleri\n        Üyeler güncel sponsor bağlantılarına hızlı ulaşırken, markalar Cleopatra Casino’nun elit vitrininde güçlü görünürlük kazanır.\n      \n\n      \n        \n          \n          \n            Ana Sponsor\n            Ana Sponsor Vitrini\n            Cleopatra Casino’nun en güçlü görünürlük alanı ana sponsor markası için ayrılmıştır. Premium konum, yüksek dikkat ve özel marka sunumu sağlar.\n            Şu an boş\n          \n        \n      \n\n      \n        \n\n          \n            𓂀\n            \n              Premium Sponsor\n              Slotbon\n              Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\n            \n            Giriş\n          \n\n          \n            𓆣\n            \n              Premium Sponsor\n              Spino\n              Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\n            \n            Giriş\n          \n\n          \n            𓋹\n            \n              Premium Sponsor\n              Jetbet\n              Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\n            \n            Giriş\n          \n\n          \n            𓃭\n            \n              Premium Sponsor\n              Rexbet\n              Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\n            \n            Giriş\n          \n\n          \n            𓆃\n            \n              Premium Sponsor\n              Hovarda\n              Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\n            \n            Giriş\n          \n\n          \n            𓇳\n            \n              Premium Sponsor\n              Davegas\n              Cleopatra premium sponsor vitrini üzerinden güncel giriş bağlantısı.\n            \n            Giriş\n          \n\n      \n    \n\n    \n      \n        𓇳\n        \n          CLEOPATRA PREMIUM AKIŞI\n          Üyeler ve sponsorlar için elit vitrin\n          Cleopatra Casino, üyelerine güncel bağlantıları hızlı sunarken sponsor markalara prestijli, net ve dikkat çekici bir reklam vitrini sağlar.\n        \n        Sohbete Git\n      \n    \n\n    \n      \n        𓃭\n        Cleopatra Telegram İletişim\n        Sponsor başvurusu, reklam alanı, marka görünürlüğü ve iş birliği talepleri için resmi Telegram iletişim kanalımız üzerinden ulaşabilirsiniz.\n        Telegram ile İletişim\n      \n    \n\n    \n      Cleopatra Casino\n      Premium sponsor vitrini ve resmi bağlantı ağı\n    \n  \n\n  \n    Sohbet\n    Sponsor\n    İletişim\n  \n\n  \n\n\n@font-face{font-family:FigtreeVF;src:url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format(\"woff2 supports variations\"),url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format(\"woff2-variations\");font-weight:100 1000;font-display:swap}"
+title
+: 
+""
+translate
+: 
+true
+vLink
+: 
+""
+virtualKeyboardPolicy
+: 
+""
+writingSuggestions
+: 
+"true"
