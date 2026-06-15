@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>slotX — M-Performance Gaming Lounge</title>
-    <!-- Keskin ve Teknolojik Tipografi -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Plus+Jakarta+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>slotX — Exclusive BMW M-Performance Gateway</title>
+    <!-- Elit ve Agresif Premium Yazı Tipleri -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bmw-black: #0a0c10;
-            --bmw-dark: #11141a;
-            --bmw-blue: #0066b2;
-            --bmw-light-blue: #00a2e8;
-            --bmw-red: #e31b23;
-            --carbon-border: rgba(255, 255, 255, 0.04);
-            --text-gray: #8f9cae;
+            --bmw-black: #050507;
+            --bmw-card: #0c0d12;
+            --m-blue: #0066b2;
+            --m-purple: #1c2a74;
+            --m-red: #e31b23;
+            --laser-blue: #00f0ff;
+            --text-glow: 0 0 15px rgba(0, 240, 255, 0.4);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
@@ -36,369 +36,421 @@
             position: relative;
         }
 
-        /* BMW Gece Atmosferi ve Gösterge Işıkları Efekti */
+        /* 🏎️ DEVRİMSEL BMW LAZER SİLÜET ARKA PLAN */
         body::before {
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: 
-                radial-gradient(circle at 100% 0%, rgba(0, 102, 178, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 0% 100%, rgba(227, 27, 35, 0.08) 0%, transparent 50%),
-                linear-gradient(rgba(10, 12, 16, 0.95), rgba(5, 6, 8, 0.98));
-            z-index: -1;
+                /* Lazer Far Yansımaları */
+                radial-gradient(circle at 25% 20%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 75% 20%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
+                /* Arka Egzoz ve M Gücü Kızıllığı */
+                radial-gradient(circle at 50% 90%, rgba(223, 27, 35, 0.06) 0%, transparent 50%),
+                /* Derin Karanlık Mat Matris */
+                linear-gradient(180deg, #050507 0%, #020203 100%);
+            z-index: -2;
         }
 
-        /* İnce Karbon Fiber Izgara Deseni */
+        /* Karbon Fiber Dokusu Mesh */
         body::after {
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
-            background-size: 20px 20px;
-            z-index: -2;
-            opacity: 0.5;
+            background-image: 
+                linear-gradient(45deg, rgba(0,0,0,0.15) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.15)), 
+                linear-gradient(45deg, rgba(0,0,0,0.15) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.15));
+            background-size: 8px 8px;
+            background-position: 0 0, 4px 4px;
+            z-index: -1;
+            opacity: 0.8;
         }
 
-        /* Header / BMW Kadran Tarzı Logo */
+        /* Üst Header - BMW İkonik M Çizgileri Temalı */
         header {
-            max-width: 1300px;
+            max-width: 1400px;
             width: 100%;
             margin: 0 auto;
-            padding: 50px 24px 30px 24px;
+            padding: 40px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
+            position: relative;
         }
 
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 800;
-            letter-spacing: -1px;
+        /* Üst İnce M-Power Şeriti */
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 24px; right: 24px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--m-blue) 0%, var(--m-purple) 33%, var(--m-red) 66%, transparent 100%);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Resmi Spor M Logosu Efekti */
+        .m-stripes {
+            display: flex;
+            gap: 3px;
+        }
+        .m-stripes span {
+            width: 5px;
+            height: 25px;
+            transform: skewX(-20px);
+        }
+        .m-stripes span:nth-child(1) { background: var(--m-blue); }
+        .m-stripes span:nth-child(2) { background: var(--m-purple); }
+        .m-stripes span:nth-child(3) { background: var(--m-red); }
+
+        .brand-title {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -2px;
             text-transform: uppercase;
             color: #ffffff;
         }
 
-        .logo span {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--bmw-red);
-            font-weight: 500;
-            font-size: 2.4rem;
-            margin-left: -2px;
-            text-shadow: 0 0 20px rgba(227, 27, 35, 0.6);
+        .sys-status {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #555860;
+            font-weight: 900;
+        }
+        .sys-status span {
+            color: var(--laser-blue);
+            text-shadow: var(--text-glow);
         }
 
-        .status-panel {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            color: var(--bmw-light-blue);
-            font-weight: 500;
-            border-left: 3px solid var(--bmw-blue);
-            padding-left: 12px;
-        }
-
-        /* Ana Gövde */
-        .container {
-            max-width: 1300px;
+        /* Ana Gövde Konteyneri */
+        .wrapper {
+            max-width: 1400px;
             width: 100%;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 60px 24px;
             flex: 1;
         }
 
-        .hero-title {
-            margin: 50px 0;
-            max-width: 800px;
+        /* Büyük BMW Sloganı */
+        .hero-banner {
+            margin-bottom: 60px;
         }
-
-        .hero-title h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.6rem;
-            font-weight: 800;
-            line-height: 1.3;
-            letter-spacing: -0.5px;
+        .hero-banner h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -2px;
             text-transform: uppercase;
-            background: linear-gradient(180deg, #ffffff 50%, #b2bec3 100%);
+            line-height: 0.95;
+            background: linear-gradient(180deg, #ffffff 30%, rgba(255,255,255,0.2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Karbon Kokpit Kart Düzeni */
-        .grid-cockpit {
+        /* BMW Böbrek Izgarası Mantığında Kusursuz Grid */
+        .m-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            gap: 20px;
             margin-bottom: 80px;
         }
 
-        .cockpit-card {
-            background: var(--bmw-dark);
-            border: 1px solid var(--carbon-border);
-            border-radius: 4px;
-            padding: 40px 30px;
+        /* Karbon Kokpit Seçim Kartı */
+        .m-card {
+            background: linear-gradient(145deg, #0e1015 0%, #07080a 100%);
+            border: 1px solid rgba(255,255,255,0.02);
+            border-radius: 2px; /* Keskin ve maskülen hatlar */
+            padding: 45px 35px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 350px;
+            min-height: 380px;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+        }
+
+        /* Lazer Far Çizgisi */
+        .m-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 0; height: 2px;
+            background: var(--laser-blue);
+            box-shadow: var(--text-glow);
+            transition: width 0.4s ease;
+        }
+
+        .m-card:hover {
+            transform: scale(1.03) translateY(-5px);
+            background: #11141c;
+            border-color: rgba(0, 240, 255, 0.15);
+            box-shadow: 0 40px 80px rgba(0, 240, 255, 0.03);
+        }
+
+        .m-card:hover::before {
+            width: 100%;
+        }
+
+        .card-stage {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 0.65rem;
+            color: #444955;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        .m-card:hover .card-stage {
+            color: var(--laser-blue);
+        }
+
+        .m-card h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .m-card p {
+            color: #636975;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        .m-card:hover p {
+            color: #a2aab8;
+        }
+
+        /* 🏁 BMW LAUNCH CONTROL AKTİF BUTONLARI */
+        .launch-btn {
+            display: block;
+            width: 100%;
+            background: #141722;
+            border: 1px solid rgba(255,255,255,0.03);
+            color: #ffffff;
+            padding: 18px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 0;
+            transition: all 0.4s ease;
+            position: relative;
             overflow: hidden;
         }
 
-        /* Sol Kenar Agresif Şerit Efekti */
-        .cockpit-card::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 4px;
-            background: var(--bmw-blue);
-            transition: width 0.3s ease;
+        .m-card:hover .launch-btn {
+            background: #ffffff;
+            color: #000000;
+            font-weight: 900;
+            box-shadow: 0 15px 30px rgba(255,255,255,0.15);
         }
 
-        .cockpit-card:hover {
-            transform: translateY(-5px);
-            background: #161a23;
-            border-color: rgba(0, 102, 178, 0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        /* 🔥 LİGOBET - M COMPETITION AGRESİF KART STİLİ */
+        .m-competition-card {
+            background: linear-gradient(145deg, #160c0e 0%, #070304 100%);
+            border-right: 1px solid rgba(223, 27, 35, 0.05);
         }
-
-        .cockpit-card:hover::before {
-            width: 8px;
+        .m-competition-card::before {
+            background: var(--m-red);
+            box-shadow: 0 0 15px var(--m-red);
         }
-
-        .card-rpm {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--bmw-light-blue);
-            margin-bottom: 15px;
+        .m-competition-card .card-stage {
+            color: var(--m-red);
         }
-
-        .cockpit-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 800;
+        .m-competition-card:hover {
+            border-color: rgba(223, 27, 35, 0.3);
+            box-shadow: 0 40px 80px rgba(223, 27, 35, 0.05);
+        }
+        .m-competition-card:hover .launch-btn {
+            background: var(--m-red);
             color: #ffffff;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
+            box-shadow: 0 15px 30px rgba(223, 27, 35, 0.3);
         }
 
-        .cockpit-card p {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        /* M-Performance Link Butonları */
-        .drive-btn {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background: #1c2029;
-            border: 1px solid rgba(255,255,255,0.05);
-            color: #ffffff;
-            padding: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-decoration: none;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .cockpit-card:hover .drive-btn {
-            background: var(--bmw-blue);
-            color: #ffffff;
-            border-color: transparent;
-            box-shadow: 0 10px 20px rgba(0, 102, 178, 0.3);
-        }
-
-        /* 🏁 LİGOBET - M POWER ÖZEL KARTI */
-        .m-power-card::before {
-            background: linear-gradient(180deg, var(--bmw-light-blue) 0%, var(--bmw-blue) 50%, var(--bmw-red) 100%);
-            width: 6px;
-        }
-        .m-power-card:hover {
-            border-color: rgba(227, 27, 35, 0.3);
-            background: #1a1518;
-        }
-        .m-power-card .card-rpm {
-            color: var(--bmw-red);
-        }
-        .m-power-card:hover .drive-btn {
-            background: var(--bmw-red);
-            box-shadow: 0 10px 20px rgba(227, 27, 35, 0.4);
-        }
-
-        /* Alt Panel / İletişim & Telegram Egzozu */
-        .control-desk {
-            background: #06070a;
+        /* Alt İletişim / Egzoz Konsolu Bölümü */
+        .command-bar {
+            background: #020305;
             border-top: 1px solid rgba(255,255,255,0.02);
-            padding: 50px 24px;
+            padding: 60px 24px;
         }
 
-        .desk-wrapper {
-            max-width: 1300px;
+        .command-container {
+            max-width: 1400px;
             width: 100%;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 40px;
         }
 
-        .desk-meta h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 800;
+        .command-info h3 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
             color: #ffffff;
+            letter-spacing: -0.5px;
             margin-bottom: 5px;
             text-transform: uppercase;
         }
 
-        .desk-meta p {
-            color: #4b5563;
-            font-size: 0.85rem;
+        .command-info p {
+            color: #434854;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .desk-buttons {
+        .command-actions {
             display: flex;
             gap: 15px;
         }
 
-        .social-trigger {
+        .comm-link {
             text-decoration: none;
             color: #ffffff;
-            font-family: 'Orbitron', sans-serif;
             font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 1px;
+            font-weight: 700;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            padding: 15px 30px;
-            border-radius: 2px;
-            background: #11141a;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s ease;
+            padding: 16px 35px;
+            background: #0c0d12;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.3s;
         }
 
-        .social-trigger:hover {
+        .comm-link:hover {
             background: #ffffff;
             color: #000000;
         }
 
-        .social-trigger.marketing-desk {
-            border-color: rgba(0, 162, 232, 0.4);
-            color: var(--bmw-light-blue);
+        .comm-link.m-marketing {
+            color: var(--laser-blue);
+            border-color: rgba(0, 240, 255, 0.2);
         }
-
-        .social-trigger.marketing-desk:hover {
-            background: var(--bmw-light-blue);
-            color: #ffffff;
+        .comm-link.m-marketing:hover {
+            background: var(--laser-blue);
+            color: #000000;
+            box-shadow: var(--text-glow);
             border-color: transparent;
-            box-shadow: 0 0 20px rgba(0, 162, 232, 0.3);
         }
 
-        .footer-law {
+        .legal-footer {
             width: 100%;
             text-align: center;
-            margin-top: 40px;
-            font-size: 0.7rem;
-            color: #1f2937;
-            letter-spacing: 2px;
-            font-family: 'Orbitron', sans-serif;
+            margin-top: 50px;
+            font-size: 0.65rem;
+            color: #22252e;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
         }
 
-        /* Mobil Cihaz Entegrasyonu */
-        @media (max-width: 850px) {
+        /* %100 Kusursuz Mobil Arayüz Entegrasyonu */
+        @media (max-width: 900px) {
+            body { padding: 0; }
             header { padding: 30px 20px; }
-            .hero-title h1 { font-size: 1.8rem; }
-            .grid-cockpit { grid-template-columns: 1fr; gap: 20px; }
-            .desk-wrapper { flex-direction: column; text-align: center; }
-            .desk-buttons { width: 100%; flex-direction: column; }
-            .social-trigger { width: 100%; text-align: center; }
+            .hero-banner h1 { font-size: 2.6rem; }
+            .m-grid { grid-template-columns: 1fr; gap: 20px; }
+            .command-container { flex-direction: column; text-align: center; }
+            .command-actions { width: 100%; flex-direction: column; }
+            .comm-link { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Üst Kontrol Paneli -->
+    <!-- Üst Kontrol Ünitesi -->
     <header>
-        <div class="logo">slot<span>X</span></div>
-        <div class="status-panel">M-COMPETITION ONLINE</div>
+        <div class="logo-container">
+            <div class="m-stripes">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="brand-title">slotX</div>
+        </div>
+        <div class="sys-status">ENGINE STATUS: <span>ACTIVE</span></div>
     </header>
 
-    <!-- Ana Lobiler -->
-    <div class="container">
+    <!-- Ana Lobiler Kılavuzu -->
+    <div class="wrapper">
         
-        <div class="hero-title">
-            <h1>High-Performance Casino Grid</h1>
+        <div class="hero-banner">
+            <h1>M-POWERED<br>GAMING DIRECTORY</h1>
         </div>
 
-        <div class="grid-cockpit">
+        <div class="m-grid">
             
-            <!-- LİGOBET (M POWER ÖZEL KARTI) -->
-            <div class="cockpit-card m-power-card">
+            <!-- 🏁 LİGOBET - ULTRA M COMPETITION SEÇENEĞİ -->
+            <div class="m-card m-competition-card">
                 <div>
-                    <div class="card-rpm">M Power Lounge</div>
-                    <h3>LİGOBET</h3>
-                    <p>M-Serisinin zirvesi gibi agresif limitler, anlık VIP hizmet birimi ve kısıtlamasız slot havuzları.</p>
+                    <div class="card-stage">STAGE 3 // COMPETITION</div>
+                    <h2>LİGOBET</h2>
+                    <p>M departmanının en saf ve en vahşi gücü. Sınırlandırılmamış VIP masa limitleri ve doğrudan maksimum hacimli slot havuzu.</p>
                 </div>
-                <a href="https://ligogr.xyz/BBlq" target="_blank" class="drive-btn">Hızlan</a>
+                <a href="https://ligogr.xyz/BBlq" target="_blank" class="launch-btn">LAUNCH CONTROL</a>
             </div>
 
             <!-- BET21 -->
-            <div class="cockpit-card">
+            <div class="m-card">
                 <div>
-                    <div class="card-rpm">Twin-Turbo Stage 2</div>
-                    <h3>BET21</h3>
-                    <p>Kayıplarda otomatik %30 cashback desteği ile bakiyenizi her zaman maksimum torkta tutun.</p>
+                    <div class="card-stage">STAGE 2 // TWIN TURBO</div>
+                    <h2>BET21</h2>
+                    <p>%30 Kayıp iadesi mimarisiyle bakiyenizi koruma kalkanına alın, yüksek tork ile kazancı anında yakalayın.</p>
                 </div>
-                <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="drive-btn">Hızlan</a>
+                <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="launch-btn">LAUNCH CONTROL</a>
             </div>
 
             <!-- PARİPULSE -->
-            <div class="cockpit-card">
+            <div class="m-card">
                 <div>
-                    <div class="card-rpm">xDrive Traction Control</div>
-                    <h3>PARİPULSE</h3>
-                    <p>Kripto ödeme sistemleri ve ultra hızlı transfer hızı ile finansal işlemlerde tam yol tutuşu.</p>
+                    <div class="card-stage">DRIVE AHEAD // XDRIVE</div>
+                    <h2>PARİPULSE</h2>
+                    <p>Kripto ve merkeziyetsiz anlık ödeme sistemleriyle finansal süreçlerde maksimum yol tutuşu ve hız deneyimi.</p>
                 </div>
-                <a href="https://pari-pulse.com/Bhbar" target="_blank" class="drive-btn">Hızlan</a>
+                <a href="https://pari-pulse.com/Bhbar" target="_blank" class="launch-btn">LAUNCH CONTROL</a>
             </div>
 
             <!-- BETBALİNA -->
-            <div class="cockpit-card">
+            <div class="m-card">
                 <div>
-                    <div class="card-rpm">Launch Control Engine</div>
-                    <h3>BETBALİNA</h3>
-                    <p>Yüksek çarpanlı peri temalı slot mekaniği ile doğrudan yüksek jackpot kazançlarına kilitlenin.</p>
+                    <div class="card-stage">LAUNCH ENGINE // V8</div>
+                    <h2>BETBALİNA</h2>
+                    <p>Yüksek çarpanlı gizli peri algoritmaları ve güncellenmiş yeni nesil jackpot mekanizmaları istasyonu.</p>
                 </div>
-                <a href="https://betbal.ink/peri" target="_blank" class="drive-btn">Hızlan</a>
+                <a href="https://betbal.ink/peri" target="_blank" class="launch-btn">LAUNCH CONTROL</a>
             </div>
 
         </div>
 
     </div>
 
-    <!-- Alt Kontrol Masası -->
-    <div class="control-desk">
-        <div class="desk-wrapper">
-            <div class="desk-meta">
-                <h2>slotX Command Center</h2>
-                <p>Resmi operasyonel ağlar, M-Performance duyuruları ve teknik iletişim masası.</p>
+    <!-- Alt Haberleşme Masası -->
+    <div class="command-bar">
+        <div class="command-container">
+            <div class="command-info">
+                <h3>SLOTX OFFICIAL HUB</h3>
+                <p>M-Performance operasyon birimleri ve ana veri merkezi duyuruları.</p>
             </div>
-            <div class="desk-buttons">
-                <a href="https://t.me/slotxduyuru" target="_blank" class="social-trigger">Duyuru Kanalı</a>
-                <a href="https://t.me/slotXmarketing" target="_blank" class="social-trigger marketing-desk">Marketing Desk</a>
+            <div class="command-actions">
+                <a href="https://t.me/slotxduyuru" target="_blank" class="comm-link">DUYURU KANALI</a>
+                <a href="https://t.me/slotXmarketing" target="_blank" class="comm-link m-marketing">MARKETING DESK</a>
             </div>
-            <div class="footer-law">
-                &copy; 2026 slotX motorsport directory. Cryptographic driver access. 18+ Responsible Gaming.
+            <div class="legal-footer">
+                &copy; 2026 slotX performance network. Cryptographic user verification active. +18 Only.
             </div>
         </div>
     </div>
