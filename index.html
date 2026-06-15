@@ -3,353 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>slotX // Ultra Luxury Casino Portal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>slotX — Exclusive Gaming Lounge</title>
+    <!-- Elit ve Ağır Tipografi İçin Fontlar -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-main: #06070d;
-            --bg-card: rgba(14, 16, 27, 0.75);
-            --gold: #f39c12;
-            --gold-glow: #e67e22;
-            --neon-purple: #8a2be2;
+            --bg-color: #0d0d0d;
+            --gold-primary: #c5a880;
+            --gold-dark: #8c7355;
+            --text-muted: #666666;
+            --border-color: rgba(197, 168, 128, 0.15);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            background-color: var(--bg-main);
-            color: #f1f2f6;
+            background-color: var(--bg-color);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(138, 43, 226, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(243, 156, 18, 0.1) 0px, transparent 50%);
+            justify-content: space-between;
+            padding: 40px;
         }
 
-        /* Üst Menü / Esnek Logo Alanı */
+        /* İnce Çizgisel Arka Plan Dokusu */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.95)), 
+                        radial-gradient(circle at 50% 30%, rgba(197, 168, 128, 0.05) 0%, transparent 60%);
+            z-index: -1;
+        }
+
+        /* Header / Ağır Minimalist Logo */
         header {
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .logo-box {
-            display: inline-block;
-            border: 2px solid var(--gold);
-            padding: 10px 35px;
-            border-radius: 0 20px 0 20px;
-            box-shadow: 0 0 25px rgba(243, 156, 18, 0.2);
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 30px;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
         }
 
         .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            letter-spacing: 6px;
-            background: linear-gradient(180deg, #ffffff 40%, #f39c12 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: lowercase;
         }
 
-        /* Slogan */
-        .subtitle {
-            font-size: 0.85rem;
-            letter-spacing: 5px;
+        .logo span {
+            color: var(--gold-primary);
+            font-family: 'Inter', sans-serif;
+            font-weight: 200;
+            font-size: 2rem;
+            position: relative;
+            top: -5px;
+            margin-left: 2px;
+        }
+
+        .header-status {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: #a4b0be;
-            margin-top: 15px;
+            color: var(--gold-primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* Ana Gövde */
-        .wrapper {
-            max-width: 1250px;
-            margin: 20px auto 60px auto;
-            padding: 0 24px;
+        .header-status::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--gold-primary);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px var(--gold-primary);
+        }
+
+        /* Ana İçerik / Geniş Liste Düzeni */
+        main {
+            max-width: 1400px;
             width: 100%;
+            margin: 60px auto;
             flex: 1;
         }
 
-        /* Link İstasyonları Grid */
-        .station-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+        .intro {
             margin-bottom: 60px;
         }
 
-        /* Yeni Asimetrik ve Işıklı Kart Tasarımı */
-        .station-card {
-            background: var(--bg-card);
-            border-left: 4px solid var(--gold);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-right: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 35px 25px;
+        .intro h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.2;
+            color: #e5e5e5;
+        }
+
+        /* Sıra Tabanlı Link Tasarımı (Kutular Kaldırıldı) */
+        .lounge-list {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            transition: all 0.4s ease;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
 
-        /* Kart Üzerine Gelindiğinde Canlanma Efekti */
-        .station-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            background: rgba(20, 23, 41, 0.9);
-            border-left-color: #fff;
-            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.2);
+        .lounge-row {
+            display: grid;
+            grid-template-columns: 2fr 3fr 1.5fr;
+            align-items: center;
+            padding: 35px 10px;
+            border-bottom: 1px solid var(--border-color);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .station-info h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            color: #fff;
+        .lounge-row:hover {
+            background-color: rgba(197, 168, 128, 0.02);
+            padding-left: 25px;
+            border-bottom-color: var(--gold-primary);
         }
 
-        .station-info p {
+        .row-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .lounge-row:hover .row-title {
+            color: var(--gold-primary);
+        }
+
+        .row-desc {
             font-size: 0.9rem;
-            color: #747d8c;
+            color: var(--text-muted);
+            font-weight: 400;
+            padding-right: 40px;
             line-height: 1.6;
-            margin-bottom: 30px;
+            transition: color 0.3s;
         }
 
-        .badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 1px;
-            padding: 4px 10px;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.05);
+        .lounge-row:hover .row-desc {
+            color: #cccccc;
         }
 
-        /* Akıllı ve Aktif Butonlar */
-        .action-btn {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: transparent;
-            color: #fff;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            text-align: center;
-            display: inline-block;
-        }
-
-        /* Her Markaya Özel Kimlik Rengi */
-        .ligobet-card { border-left-color: #ff4757; }
-        .ligobet-card .action-btn:hover { background: #ff4757; box-shadow: 0 0 20px rgba(255, 71, 87, 0.4); border-color: #ff4757; }
-        .ligobet-card .badge { color: #ff4757; }
-
-        .bet21-card { border-left-color: #2ed573; }
-        .bet21-card .action-btn:hover { background: #2ed573; color: #000; box-shadow: 0 0 20px rgba(46, 213, 115, 0.4); border-color: #2ed573; }
-        .bet21-card .badge { color: #2ed573; }
-
-        .paripulse-card { border-left-color: #1e90ff; }
-        .paripulse-card .action-btn:hover { background: #1e90ff; box-shadow: 0 0 20px rgba(30, 144, 255, 0.4); border-color: #1e90ff; }
-        .paripulse-card .badge { color: #1e90ff; }
-
-        .betbalina-card { border-left-color: #ffa502; }
-        .betbalina-card .action-btn:hover { background: #ffa502; color: #000; box-shadow: 0 0 20px rgba(255, 165, 2, 0.4); border-color: #ffa502; }
-        .betbalina-card .badge { color: #ffa502; }
-
-
-        /* İletişim ve Telegram İstasyonu (Alt Katman) */
-        .contact-hub {
-            background: radial-gradient(circle at top right, rgba(138, 43, 226, 0.1), transparent), rgba(11, 13, 23, 0.9);
-            border: 1px solid rgba(255,255,255,0.03);
-            border-radius: 16px;
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-        }
-
-        .contact-text h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .contact-text p {
-            color: #747d8c;
-            font-size: 0.95rem;
-        }
-
-        .contact-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-link {
-            padding: 16px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s;
-            text-transform: uppercase;
-        }
-
-        .tg-channel {
-            background: #0088cc;
-            box-shadow: 0 0 20px rgba(0, 136, 204, 0.3);
-        }
-
-        .tg-marketing {
-            background: #20bf6b;
-            box-shadow: 0 0 20px rgba(32, 191, 107, 0.3);
-        }
-
-        .social-link:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.15);
-            box-shadow: 0 5px 25px rgba(255,255,255,0.1);
-        }
-
-        /* Footer */
-        footer {
-            margin-top: auto;
-            background: #030408;
-            padding: 30px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.02);
+        .row-action {
+            text-align: right;
             font-size: 0.8rem;
-            color: #57606f;
-            letter-spacing: 1px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+            font-weight: 600;
+            transition: all 0.3s;
         }
 
-        /* Responsive Dizayn */
-        @media (max-width: 900px) {
-            .contact-hub {
-                flex-direction: column;
-                text-align: center;
-            }
-            .contact-buttons {
-                width: 100%;
-                flex-direction: column;
-            }
-            .social-link {
-                width: 100%;
-                justify-content: center;
-            }
+        .lounge-row:hover .row-action {
+            transform: translateX(5px);
+            color: #ffffff;
         }
 
-        @media (max-width: 600px) {
-            .logo { font-size: 2.5rem; }
-            .station-grid { grid-template-columns: 1fr; }
+        /* Alt İletişim / Telegram Segmenti */
+        .footer-hub {
+            max-width: 1400px;
+            width: 100%;
+            margin: 40px auto 0 auto;
+            border-top: 1px solid var(--border-color);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .hub-meta h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+
+        .hub-meta p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .hub-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .hub-btn {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--gold-primary);
+            padding-bottom: 5px;
+            transition: all 0.3s;
+        }
+
+        .hub-btn:hover {
+            color: var(--gold-primary);
+            border-bottom-color: #ffffff;
+        }
+
+        /* Telif Metni */
+        .copyright {
+            margin-top: 60px;
+            font-size: 0.75rem;
+            color: #333333;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Mobil Cihazlar İçin Kusursuz Esneklik */
+        @media (max-width: 850px) {
+            body { padding: 20px; }
+            .lounge-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 30px 0;
+            }
+            .row-desc { padding-right: 0; }
+            .row-action { text-align: left; margin-top: 5px; }
+            .footer-hub { flex-direction: column; gap: 30px; }
+            .hub-links { width: 100%; justify-content: space-between; }
+            .intro h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Üst Bar -->
     <header>
-        <div class="logo-box">
-            <div class="logo">slotX</div>
-        </div>
-        <div class="subtitle">Official VIP Gate</div>
+        <div class="logo">slot<span>X</span></div>
+        <div class="header-status">Verified Concierge</div>
     </header>
 
-    <div class="wrapper">
-        
-        <!-- Ana Link İstasyonları -->
-        <div class="station-grid">
+    <!-- Ana Platform Seçimi -->
+    <main>
+        <div class="intro">
+            <h1>Seçkin partner kulüpleri ve yüksek limitli masalar.</h1>
+        </div>
+
+        <div class="lounge-list">
             
             <!-- LİGOBET -->
-            <div class="station-card ligobet-card">
-                <span class="badge">VIP Access</span>
-                <div class="station-info">
-                    <h3>LİGOBET</h3>
-                    <p>Yüksek sadakat programı ve sınırsız masa limitleriyle elit oyuncuların öncelikli tercihi.</p>
-                </div>
-                <a href="https://ligogr.xyz/BBlq" target="_blank" class="btn action-btn">Bağlan</a>
-            </div>
+            <a href="https://ligogr.xyz/BBlq" target="_blank" class="lounge-row">
+                <div class="row-title">Ligobet VIP</div>
+                <div class="row-desc">Yüksek profilli oyuncular için rezerve edilmiş özel masa limitleri ve kişisel hesap temsilciliği portalı.</div>
+                <div class="row-action">Giriş Yap —</div>
+            </a>
 
             <!-- BET21 -->
-            <div class="station-card bet21-card">
-                <span class="badge">%30 Cashback</span>
-                <div class="station-info">
-                    <h3>BET21</h3>
-                    <p>Kayıpları kazanca dönüştüren özel iade oranları ve kesintisiz slot turnuvaları istasyonu.</p>
-                </div>
-                <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="btn action-btn">Bağlan</a>
-            </div>
+            <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="lounge-row">
+                <div class="row-title">Bet21 Lounge</div>
+                <div class="row-desc">Haftalık %30 kayıp iadesi ile casino operasyonlarında maksimum finansal güvence alanı.</div>
+                <div class="row-action">Giriş Yap —</div>
+            </a>
 
             <!-- PARİPULSE -->
-            <div class="station-card paripulse-card">
-                <span class="badge">Fast Payout</span>
-                <div class="station-info">
-                    <h3>PARİPULSE</h3>
-                    <p>Kripto ve hızlı ödeme altyapısıyla küresel standartlarda modern canlı casino deneyimi.</p>
-                </div>
-                <a href="https://pari-pulse.com/Bhbar" target="_blank" class="btn action-btn">Bağlan</a>
-            </div>
+            <a href="https://pari-pulse.com/Bhbar" target="_blank" class="lounge-row">
+                <div class="row-title">Paripulse Premium</div>
+                <div class="row-desc">Uluslararası lisans standartlarında küresel ağ entegrasyonu ve anlık kripto varlık transfer opsiyonları.</div>
+                <div class="row-action">Giriş Yap —</div>
+            </a>
 
             <!-- BETBALİNA -->
-            <div class="station-card betbalina-card">
-                <span class="badge">Special Bonus</span>
-                <div class="station-info">
-                    <h3>BETBALİNA</h3>
-                    <p>Peri temalı gizli çarpanlar, yeni nesil slot oyunları ve dinamik altyapı desteği.</p>
-                </div>
-                <a href="https://betbal.ink/peri" target="_blank" class="btn action-btn">Bağlan</a>
-            </div>
+            <a href="https://betbal.ink/peri" target="_blank" class="lounge-row">
+                <div class="row-title">Betbalina Elite</div>
+                <div class="row-desc">Yeni nesil yüksek çarpanlı slot algoritmaları ve güncellenmiş peri temalı jackpot havuzları.</div>
+                <div class="row-action">Giriş Yap —</div>
+            </a>
 
         </div>
+    </main>
 
-        <!-- Alt İletişim İstasyonu -->
-        <div class="contact-hub">
-            <div class="contact-text">
-                <h2>Resmi Ağ Sorumluları</h2>
-                <p>Duyurular, güncel domainler ve iş birlikleri için direkt bağlantı kurun.</p>
-            </div>
-            <div class="contact-buttons">
-                <a href="https://t.me/slotxduyuru" target="_blank" class="social-link tg-channel">
-                    <i class="fa-brands fa-telegram"></i> Resmi Kanal
-                </a>
-                <a href="https://t.me/slotXmarketing" target="_blank" class="social-link tg-marketing">
-                    <i class="fa-solid fa-envelope-open-text"></i> Marketing
-                </a>
-            </div>
+    <!-- Alt İletişim ve Telegram Kanalları -->
+    <div class="footer-hub">
+        <div class="hub-meta">
+            <h3>Direct Desk</h3>
+            <p>Resmi operasyonel ağlar ve pazarlama ilişkileri.</p>
         </div>
-
+        <div class="hub-links">
+            <a href="https://t.me/slotxduyuru" target="_blank" class="hub-btn">Duyuru Kanalı</a>
+            <a href="https://t.me/slotXmarketing" target="_blank" class="hub-btn">Marketing Desk</a>
+        </div>
     </div>
 
-    <footer>
-        &copy; 2026 SLOTX DIRECTORY // ENCRYPTED ACCESS PORTAL // RESPONSIBLE GAMING (+18)
-    </footer>
+    <!-- Güvenlik ve Telif Metni -->
+    <div class="copyright">
+        &copy; 2026 slotX directory. Protected under cryptographic access protocol. 18+ Responsible Gaming.
+    </div>
 
 </body>
 </html>
