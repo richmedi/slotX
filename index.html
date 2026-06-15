@@ -3,318 +3,405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>slotX — Exclusive Gaming Lounge</title>
-    <!-- Elit ve Ağır Tipografi İçin Fontlar -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+    <title>slotX — Exclusive Casino Directory</title>
+    <!-- Premium Lüks Yazı Tipleri -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #0d0d0d;
-            --gold-primary: #c5a880;
-            --gold-dark: #8c7355;
-            --text-muted: #666666;
-            --border-color: rgba(197, 168, 128, 0.15);
+            --bg-deep: #08090c;
+            --gold-gradient: linear-gradient(135deg, #dfba73 0%, #be9648 50%, #916d29 100%);
+            --gold-solid: #cda862;
+            --card-bg: rgba(18, 20, 26, 0.7);
+            --border-glow: rgba(205, 168, 98, 0.12);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            color: #e2e8f0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 40px;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* İnce Çizgisel Arka Plan Dokusu */
+        /* Arka Plan Mat Lüks Casino Dokusu */
         body::before {
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.95)), 
-                        radial-gradient(circle at 50% 30%, rgba(197, 168, 128, 0.05) 0%, transparent 60%);
+            background: 
+                radial-gradient(circle at 50% -20%, rgba(205, 168, 98, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(205, 168, 98, 0.02) 0%, transparent 40%);
             z-index: -1;
         }
 
-        /* Header / Ağır Minimalist Logo */
+        /* Üst Menü / Logo */
         header {
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 30px;
-            max-width: 1400px;
+        }
+
+        .brand-logo {
+            font-family: 'Marcellus', serif;
+            font-size: 2.6rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #fff 40%, #cda862 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 400;
+        }
+
+        .brand-logo span {
+            font-family: 'Marcellus', serif;
+            color: #fff;
+            -webkit-text-fill-color: #fff;
+            font-size: 2.4rem;
+        }
+
+        .system-badge {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold-solid);
+            border: 1px solid var(--border-glow);
+            padding: 8px 16px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.01);
+        }
+
+        /* Ana İçerik Alanı */
+        .container {
+            max-width: 1300px;
             width: 100%;
             margin: 0 auto;
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #ffffff;
-            text-transform: lowercase;
-        }
-
-        .logo span {
-            color: var(--gold-primary);
-            font-family: 'Inter', sans-serif;
-            font-weight: 200;
-            font-size: 2rem;
-            position: relative;
-            top: -5px;
-            margin-left: 2px;
-        }
-
-        .header-status {
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold-primary);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .header-status::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--gold-primary);
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 10px var(--gold-primary);
-        }
-
-        /* Ana İçerik / Geniş Liste Düzeni */
-        main {
-            max-width: 1400px;
-            width: 100%;
-            margin: 60px auto;
+            padding: 0 24px;
             flex: 1;
         }
 
-        .intro {
-            margin-bottom: 60px;
+        /* Büyük Karşılama Başlığı */
+        .hero-section {
+            margin: 40px 0 60px 0;
+            max-width: 700px;
         }
 
-        .intro h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
+        .hero-section h1 {
+            font-family: 'Marcellus', serif;
+            font-size: 3rem;
             font-weight: 400;
-            font-style: italic;
             line-height: 1.2;
-            color: #e5e5e5;
+            color: #ffffff;
+            margin-bottom: 15px;
         }
 
-        /* Sıra Tabanlı Link Tasarımı (Kutular Kaldırıldı) */
-        .lounge-list {
+        .hero-section p {
+            color: #718096;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* Slot Makinesi Silindirlerini Andıran Ağır Grid Düzeni */
+        .lobby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .lobby-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-top: 2px solid var(--gold-solid);
+            border-radius: 8px;
+            padding: 40px 30px;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            min-height: 340px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .lounge-row {
-            display: grid;
-            grid-template-columns: 2fr 3fr 1.5fr;
-            align-items: center;
-            padding: 35px 10px;
-            border-bottom: 1px solid var(--border-color);
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* İnce lüks parıltı efekti */
+        .lobby-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, rgba(205,168,98,0.2), transparent 40%) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
-        .lounge-row:hover {
-            background-color: rgba(197, 168, 128, 0.02);
-            padding-left: 25px;
-            border-bottom-color: var(--gold-primary);
+        .lobby-card:hover {
+            transform: translateY(-8px);
+            background: rgba(22, 25, 33, 0.9);
+            box-shadow: 0 30px 60px rgba(205, 168, 98, 0.05);
+            border-color: rgba(205, 168, 98, 0.3);
         }
 
-        .row-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+        .lobby-card:hover::after {
+            opacity: 1;
         }
 
-        .lounge-row:hover .row-title {
-            color: var(--gold-primary);
-        }
-
-        .row-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 400;
-            padding-right: 40px;
-            line-height: 1.6;
-            transition: color 0.3s;
-        }
-
-        .lounge-row:hover .row-desc {
-            color: #cccccc;
-        }
-
-        .row-action {
-            text-align: right;
-            font-size: 0.8rem;
-            letter-spacing: 4px;
+        .card-meta {
+            font-size: 0.75rem;
             text-transform: uppercase;
-            color: var(--gold-primary);
+            letter-spacing: 2px;
+            color: var(--gold-solid);
+            margin-bottom: 12px;
             font-weight: 600;
-            transition: all 0.3s;
         }
 
-        .lounge-row:hover .row-action {
-            transform: translateX(5px);
+        .lobby-card h3 {
+            font-family: 'Marcellus', serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .lobby-card p {
+            color: #8a99ad;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Aktif ve Güçlü Link Butonları */
+        .gate-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: transparent;
+            border: 1px solid rgba(205, 168, 98, 0.3);
+            color: #ffffff;
+            padding: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+        }
+
+        .lobby-card:hover .gate-btn {
+            background: var(--gold-gradient);
+            color: #000000;
+            border-color: transparent;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(205, 168, 98, 0.2);
+        }
+
+        /* LİGOBET VIP Kartı İçin Ekstra Ayrıcalıklı Stil */
+        .vip-override {
+            background: linear-gradient(180deg, rgba(20, 21, 26, 0.9) 0%, rgba(10, 11, 14, 0.95) 100%);
+            border-top: 2px solid #ffffff;
+        }
+        .vip-override .card-meta {
             color: #ffffff;
         }
+        .vip-override .gate-btn {
+            border-color: rgba(255,255,255,0.2);
+        }
+        .vip-override:hover .gate-btn {
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+        }
 
-        /* Alt İletişim / Telegram Segmenti */
-        .footer-hub {
-            max-width: 1400px;
+        /* Alt Alan / İletişim & Telegram İstasyonları */
+        .desk-footer {
+            background: #0d0f14;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            padding: 60px 24px;
+            margin-top: auto;
+        }
+
+        .desk-container {
+            max-width: 1300px;
             width: 100%;
-            margin: 40px auto 0 auto;
-            border-top: 1px solid var(--border-color);
-            padding-top: 40px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .hub-meta h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 400;
-            margin-bottom: 5px;
-        }
-
-        .hub-meta p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .hub-links {
-            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
             gap: 40px;
         }
 
-        .hub-btn {
+        .desk-info h2 {
+            font-family: 'Marcellus', serif;
+            font-size: 1.6rem;
             color: #ffffff;
-            text-decoration: none;
+            margin-bottom: 6px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .desk-info p {
+            color: #4a5568;
             font-size: 0.85rem;
+        }
+
+        .desk-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .desk-btn {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            border-bottom: 1px solid var(--gold-primary);
-            padding-bottom: 5px;
-            transition: all 0.3s;
+            padding: 14px 28px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
         }
 
-        .hub-btn:hover {
-            color: var(--gold-primary);
-            border-bottom-color: #ffffff;
+        .desk-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
         }
 
-        /* Telif Metni */
-        .copyright {
-            margin-top: 60px;
-            font-size: 0.75rem;
-            color: #333333;
+        .desk-btn.marketing {
+            border-color: rgba(205, 168, 98, 0.3);
+            color: var(--gold-solid);
+        }
+
+        .desk-btn.marketing:hover {
+            background: var(--gold-gradient);
+            color: #000000;
+            border-color: transparent;
+        }
+
+        .legal-notice {
+            width: 100%;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.7rem;
+            color: #2d3748;
             letter-spacing: 2px;
             text-transform: uppercase;
-            text-align: center;
-            width: 100%;
         }
 
-        /* Mobil Cihazlar İçin Kusursuz Esneklik */
+        /* Responsive Akıllı Telefon Uyumu */
         @media (max-width: 850px) {
-            body { padding: 20px; }
-            .lounge-row {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                padding: 30px 0;
-            }
-            .row-desc { padding-right: 0; }
-            .row-action { text-align: left; margin-top: 5px; }
-            .footer-hub { flex-direction: column; gap: 30px; }
-            .hub-links { width: 100%; justify-content: space-between; }
-            .intro h1 { font-size: 2.5rem; }
+            body { padding: 0; }
+            header { padding: 30px 20px; }
+            .hero-section h1 { font-size: 2.2rem; }
+            .lobby-grid { grid-template-columns: 1fr; gap: 20px; }
+            .desk-container { flex-direction: column; text-align: center; }
+            .desk-links { width: 100%; flex-direction: column; }
+            .desk-btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Üst Bar -->
+    <!-- Üst İnce Çizgi ve Marka Altyapısı -->
     <header>
-        <div class="logo">slot<span>X</span></div>
-        <div class="header-status">Verified Concierge</div>
+        <div class="brand-logo">slot<span>X</span></div>
+        <div class="system-badge">Secure Gateway</div>
     </header>
 
-    <!-- Ana Platform Seçimi -->
-    <main>
-        <div class="intro">
-            <h1>Seçkin partner kulüpleri ve yüksek limitli masalar.</h1>
+    <!-- Giriş ve Platform Seçim İstasyonu -->
+    <div class="container">
+        
+        <div class="hero-section">
+            <h1>The High-Tier Casino Directory</h1>
+            <p>Küresel standartlarda doğrulanmış lüks oyun altyapılarına ve yüksek hacimli slot ağlarına tek tıkla entegre olun.</p>
         </div>
 
-        <div class="lounge-list">
+        <div class="lobby-grid">
             
-            <!-- LİGOBET -->
-            <a href="https://ligogr.xyz/BBlq" target="_blank" class="lounge-row">
-                <div class="row-title">Ligobet VIP</div>
-                <div class="row-desc">Yüksek profilli oyuncular için rezerve edilmiş özel masa limitleri ve kişisel hesap temsilciliği portalı.</div>
-                <div class="row-action">Giriş Yap —</div>
-            </a>
+            <!-- LİGOBET - VIP ALAN -->
+            <div class="lobby-card vip-override">
+                <div>
+                    <div class="card-meta">Ultra VIP Privilege</div>
+                    <h3>LİGOBET</h3>
+                    <p>Yüksek bahis limitleri, özel VIP masalar ve kişiselleştirilmiş hesap mimarisiyle en üst segment deneyim.</p>
+                </div>
+                <a href="https://ligogr.xyz/BBlq" target="_blank" class="gate-btn">Masaya Geç</a>
+            </div>
 
             <!-- BET21 -->
-            <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="lounge-row">
-                <div class="row-title">Bet21 Lounge</div>
-                <div class="row-desc">Haftalık %30 kayıp iadesi ile casino operasyonlarında maksimum finansal güvence alanı.</div>
-                <div class="row-action">Giriş Yap —</div>
-            </a>
+            <div class="lobby-card">
+                <div>
+                    <div class="card-meta">%30 Automated Cashback</div>
+                    <h3>BET21</h3>
+                    <p>Haftalık kayıplar üzerinden anlık %30 nakit iade güvencesi sunan kurumsal oyun istasyonu.</p>
+                </div>
+                <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="gate-btn">Masaya Geç</a>
+            </div>
 
             <!-- PARİPULSE -->
-            <a href="https://pari-pulse.com/Bhbar" target="_blank" class="lounge-row">
-                <div class="row-title">Paripulse Premium</div>
-                <div class="row-desc">Uluslararası lisans standartlarında küresel ağ entegrasyonu ve anlık kripto varlık transfer opsiyonları.</div>
-                <div class="row-action">Giriş Yap —</div>
-            </a>
+            <div class="lobby-card">
+                <div>
+                    <div class="card-meta">Crypto & Fast Payout</div>
+                    <h3>PARİPULSE</h3>
+                    <p>Merkeziyetsiz hızlı çekim ağları ve küresel ölçekte kesintisiz canlı casino ve slot havuzları.</p>
+                </div>
+                <a href="https://pari-pulse.com/Bhbar" target="_blank" class="gate-btn">Masaya Geç</a>
+            </div>
 
             <!-- BETBALİNA -->
-            <a href="https://betbal.ink/peri" target="_blank" class="lounge-row">
-                <div class="row-title">Betbalina Elite</div>
-                <div class="row-desc">Yeni nesil yüksek çarpanlı slot algoritmaları ve güncellenmiş peri temalı jackpot havuzları.</div>
-                <div class="row-action">Giriş Yap —</div>
-            </a>
+            <div class="lobby-card">
+                <div>
+                    <div class="card-meta">High Multiplier Engine</div>
+                    <h3>BETBALİNA</h3>
+                    <p>Özel çarpan algoritmaları ve güncellenmiş peri temalı interaktif şans oyunları altyapısı.</p>
+                </div>
+                <a href="https://betbal.ink/peri" target="_blank" class="gate-btn">Masaya Geç</a>
+            </div>
 
         </div>
-    </main>
 
-    <!-- Alt İletişim ve Telegram Kanalları -->
-    <div class="footer-hub">
-        <div class="hub-meta">
-            <h3>Direct Desk</h3>
-            <p>Resmi operasyonel ağlar ve pazarlama ilişkileri.</p>
-        </div>
-        <div class="hub-links">
-            <a href="https://t.me/slotxduyuru" target="_blank" class="hub-btn">Duyuru Kanalı</a>
-            <a href="https://t.me/slotXmarketing" target="_blank" class="hub-btn">Marketing Desk</a>
-        </div>
     </div>
 
-    <!-- Güvenlik ve Telif Metni -->
-    <div class="copyright">
-        &copy; 2026 slotX directory. Protected under cryptographic access protocol. 18+ Responsible Gaming.
+    <!-- Resmi İletişim Masaları -->
+    <div class="desk-footer">
+        <div class="desk-container">
+            <div class="desk-info">
+                <h2>slotX Concierge Desk</h2>
+                <p>Resmi iş birlikleri, güvenli ağ duyuruları ve kurumsal iletişim kanalları.</p>
+            </div>
+            <div class="desk-links">
+                <a href="https://t.me/slotxduyuru" target="_blank" class="desk-btn">Resmi Kanal</a>
+                <a href="https://t.me/slotXmarketing" target="_blank" class="desk-btn marketing">Marketing Desk</a>
+            </div>
+            <div class="legal-notice">
+                &copy; 2026 slotX directory. All rights reserved. Cryptographic secured access. 18+ Only.
+            </div>
+        </div>
     </div>
 
 </body>
