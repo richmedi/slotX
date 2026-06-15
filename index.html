@@ -3,133 +3,367 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>slotX - Casino Dünyası</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>slotX - Luxury Casino Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        /* Genel Stil Tanımlamaları */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
         body {
-            background: radial-gradient(circle, #1a0b2e 0%, #090314 100%);
+            background: radial-gradient(circle, #1a0f2e 0%, #0a0512 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
         }
-        .casino-glow {
-            box-shadow: 0 0 20px rgba(234, 179, 8, 0.2);
+
+        /* Işıltılı Arka Plan Efektleri */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/black-twill.png'), 
+                        radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.2) 0%, transparent 40%);
+            z-index: -1;
+            pointer-events: none;
         }
-        .btn-animate {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        /* Header / Logo Alanı */
+        header {
+            padding: 30px 20px;
+            text-align: center;
+            background: rgba(10, 5, 18, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
-        .btn-animate:hover {
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #fff 30%, #d4af37 70%, #f3e5ab 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            display: inline-block;
+        }
+
+        .logo span {
+            color: #ff3366;
+            -webkit-text-fill-color: #ff3366;
+            text-shadow: 0 0 20px rgba(255, 51, 102, 0.6);
+        }
+
+        /* Ana Konteyner */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .hero-text {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p {
+            color: #b3b3b3;
+            font-size: 1.1rem;
+        }
+
+        /* Grid Sistem (Kartlar için) */
+        .grid-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        /* Lüx Kart Tasarımı */
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: 0.6s;
+            pointer-events: none;
+        }
+
+        .card:hover::before {
+            left: 100%;
+            top: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Özel VIP Kart Tasarımı */
+        .card.vip {
+            border-color: rgba(255, 51, 102, 0.3);
+        }
+        .card.vip:hover {
+            border-color: #ff3366;
+            box-shadow: 0 15px 35px rgba(255, 51, 102, 0.2);
+        }
+        .card.vip .card-icon {
+            color: #ff3366;
+            text-shadow: 0 0 15px rgba(255, 51, 102, 0.4);
+        }
+
+        /* Buton Stilleri */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+            color: #000;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #fff 0%, #d4af37 100%);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            transform: scale(1.02);
+        }
+
+        .card.vip .btn {
+            background: linear-gradient(135deg, #ff3366 0%, #b30036 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
+        }
+
+        .card.vip .btn:hover {
+            background: linear-gradient(135deg, #ff6699 0%, #ff3366 100%);
+            box-shadow: 0 6px 20px rgba(255, 51, 102, 0.5);
+        }
+
+        /* Sosyal Medya / İletişim Alt Bölüm */
+        .social-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .btn-telegram-channel {
+            background: linear-gradient(135deg, #0088cc 0%, #005580 100%);
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+        }
+
+        .btn-telegram-marketing {
+            background: linear-gradient(135deg, #248a3d 0%, #12451e 100%);
+            box-shadow: 0 4px 15px rgba(36, 138, 61, 0.3);
+        }
+
+        .btn-social:hover {
             transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255,255,255,0.1);
+            filter: brightness(1.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #050209;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        /* Mobil Uyum Tasarımı (Responsive) */
+        @media (max-width: 768px) {
+            .logo { font-size: 2.3rem; }
+            .hero-text h1 { font-size: 1.8rem; }
+            .grid-links { grid-template-columns: 1fr; padding: 0 10px; }
+            .social-buttons { flex-direction: column; align-items: center; }
+            .btn-social { width: 100%; }
         }
     </style>
 </head>
-<body class="text-white font-sans min-h-screen flex flex-col justify-between">
+<body>
 
-    <header class="w-full py-5 px-6 border-b border-purple-900/40 bg-black/40 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-dice text-yellow-500 text-3xl animate-pulse"></i>
-                <span class="text-3xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600">slotX</span>
-            </div>
-            <div class="flex items-center space-x-4">
-                <a href="https://t.me/slotxduyuru" target="_blank" class="bg-blue-600/20 hover:bg-blue-600 border border-blue-500/50 text-blue-400 hover:text-white px-4 py-2 rounded-full text-sm font-semibold btn-animate flex items-center gap-2">
-                    <i class="fa-brands fa-telegram"></i> Duyuru Kanalı
-                </a>
-                <a href="https://t.me/richofficall" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full text-sm font-semibold btn-animate flex items-center gap-2">
-                    <i class="fa-solid fa-headset"></i> İletişim
-                </a>
-            </div>
-        </div>
+    <header>
+        <div class="logo">slot<span>X</span></div>
     </header>
 
-    <main class="max-w-4xl w-full mx-auto px-4 py-12 flex-grow flex flex-col justify-center items-center">
+    <div class="container">
         
-        <div class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-white">
-                VIP Casino Giriş <span class="text-yellow-500">Portalı</span>
-            </h1>
-            <p class="text-gray-400 max-w-md mx-auto">En yüksek oranlar, kesintisiz erişim ve ayrıcalıklı alanlar için aşağıdaki butonları kullanabilirsiniz.</p>
+        <div class="hero-text">
+            <h1>Premium Casino & Slot Portalı</h1>
+            <p>Aşağıdaki güvenilir partner linklerimizden dilediğiniz alana anında geçiş yapabilirsiniz.</p>
         </div>
 
-        <div class="w-full space-y-5">
-
-            <a href="https://ligogr.xyz/BBlq" target="_blank" class="block group">
-                <div class="casino-glow border border-amber-500/30 bg-gradient-to-r from-amber-950/40 via-black/60 to-amber-950/40 p-5 rounded-2xl flex items-center justify-between btn-animate hover:border-amber-400 hover:shadow-amber-500/30">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-amber-500/10 p-4 rounded-xl text-amber-400 group-hover:scale-110 duration-300">
-                            <i class="fa-solid fa-crown text-3xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-amber-400 group-hover:text-amber-300">VIP ALAN</h3>
-                            <p class="text-xs text-gray-400 mt-0.5">LİGOBET Ayrıcalığı İçin Tıklayın</p>
-                        </div>
-                    </div>
-                    <div class="bg-amber-500 text-black font-bold px-5 py-2.5 rounded-xl shadow-lg flex items-center gap-2">
-                        GİRİŞ YAP <i class="fa-solid fa-chevron-right text-sm"></i>
-                    </div>
+        <div class="grid-links">
+            
+            <div class="card vip">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-crown"></i></div>
+                    <h3>LİGOBET VIP</h3>
+                    <p style="color: #b3b3b3; font-size: 0.85rem; margin-bottom: 20px;">Ayrıcalıklı casino deneyimi ve yüksek limitler.</p>
                 </div>
-            </a>
+                <a href="https://ligogr.xyz/BBlq" target="_blank" class="btn">Giriş Yap</a>
+            </div>
 
-            <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="block group">
-                <div class="casino-glow border border-yellow-600/30 bg-gradient-to-r from-yellow-950/40 via-black/60 to-yellow-950/40 p-5 rounded-2xl flex items-center justify-between btn-animate hover:border-yellow-500 hover:shadow-yellow-600/30">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-yellow-600/10 p-4 rounded-xl text-yellow-500 group-hover:scale-110 duration-300">
-                            <i class="fa-solid fa-coins text-3xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-yellow-500 group-hover:text-yellow-400">GOLD ALAN</h3>
-                            <p class="text-xs text-gray-400 mt-0.5">BET21 Dünyasına Katılın</p>
-                        </div>
-                    </div>
-                    <div class="bg-yellow-600 text-white font-bold px-5 py-2.5 rounded-xl shadow-lg flex items-center gap-2">
-                        GİRİŞ YAP <i class="fa-solid fa-chevron-right text-sm"></i>
-                    </div>
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-dice"></i></div>
+                    <h3>BET21</h3>
+                    <p style="color: #b3b3b3; font-size: 0.85rem; margin-bottom: 20px;">%30 Cashback ve benzersiz slot turnuvaları.</p>
                 </div>
-            </a>
+                <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="btn">Giriş Yap</a>
+            </div>
 
-            <a href="https://pari-pulse.com/Bhbar" target="_blank" class="block group">
-                <div class="casino-glow border border-red-500/30 bg-gradient-to-r from-red-950/40 via-black/60 to-red-950/40 p-5 rounded-2xl flex items-center justify-between btn-animate hover:border-red-400 hover:shadow-red-500/30">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-red-500/10 p-4 rounded-xl text-red-400 group-hover:scale-110 duration-300">
-                            <i class="fa-solid fa-gem text-3xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-red-400 group-hover:text-red-300">ROYAL ALAN</h3>
-                            <p class="text-xs text-gray-400 mt-0.5">PARİPULSE ile Maksimum Kazanç</p>
-                        </div>
-                    </div>
-                    <div class="bg-red-600 text-white font-bold px-5 py-2.5 rounded-xl shadow-lg flex items-center gap-2">
-                        GİRİŞ YAP <i class="fa-solid fa-chevron-right text-sm"></i>
-                    </div>
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-circle-dollar-to-slot"></i></div>
+                    <h3>PARİPULSE</h3>
+                    <p style="color: #b3b3b3; font-size: 0.85rem; margin-bottom: 20px;">Hızlı çekim ve kesintisiz canlı casino altyapısı.</p>
                 </div>
-            </a>
+                <a href="https://pari-pulse.com/Bhbar" target="_blank" class="btn">Giriş Yap</a>
+            </div>
 
-            <a href="https://betbal.ink/peri" target="_blank" class="block group">
-                <div class="casino-glow border border-purple-500/30 bg-gradient-to-r from-purple-950/40 via-black/60 to-purple-950/40 p-5 rounded-2xl flex items-center justify-between btn-animate hover:border-purple-400 hover:shadow-purple-500/30">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-purple-500/10 p-4 rounded-xl text-purple-400 group-hover:scale-110 duration-300">
-                            <i class="fa-solid fa-star text-3xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-purple-400 group-hover:text-purple-300">ELITE ALAN</h3>
-                            <p class="text-xs text-gray-400 mt-0.5">BETBALİNA Özel Deneyimi</p>
-                        </div>
-                    </div>
-                    <div class="bg-purple-600 text-white font-bold px-5 py-2.5 rounded-xl shadow-lg flex items-center gap-2">
-                        GİRİŞ YAP <i class="fa-solid fa-chevron-right text-sm"></i>
-                    </div>
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-jet-fighter"></i></div>
+                    <h3>BETBALİNA</h3>
+                    <p style="color: #b3b3b3; font-size: 0.85rem; margin-bottom: 20px;">Popüler slotlar ve özel peri bonusları.</p>
                 </div>
-            </a>
+                <a href="https://betbal.ink/peri" target="_blank" class="btn">Giriş Yap</a>
+            </div>
 
         </div>
-    </main>
 
-    <footer class="w-full text-center py-6 border-t border-purple-950 bg-black/60 text-sm text-gray-500">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>&copy; 2026 <span class="font-bold text-yellow-500">slotX</span>. Tüm hakları saklıdır.</p>
-            <div class="bg-purple-950/80 border border-purple-500/30 text-purple-300 px-4 py-1.5 rounded-md text-xs font-mono tracking-widest uppercase">
-                Damga: slotX
+        <div class="social-section">
+            <h2>Resmi Topluluk & İletişim</h2>
+            <div class="social-buttons">
+                <a href="https://t.me/slotxduyuru" target="_blank" class="btn-social btn-telegram-channel">
+                    <i class="fa-brands fa-telegram font-size-lg"></i> Telegram Duyuru
+                </a>
+                <a href="https://t.me/slotXmarketing" target="_blank" class="btn-social btn-telegram-marketing">
+                    <i class="fa-solid fa-headset"></i> Marketing / İletişim
+                </a>
             </div>
         </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 <strong>slotX</strong>. Tüm Hakları Saklıdır. +18 Sorumlu Oyun.</p>
     </footer>
 
+    <script>
+        document.querySelectorAll('a').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Linklerin güvenli bir şekilde yeni sekmede açıldığının log takibi
+                console.log(this.innerText + " butonuna tıklandı, yönlendiriliyor: " + this.href);
+            });
+        });
+    </script>
 </body>
 </html>
