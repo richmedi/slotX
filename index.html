@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>slotX — Dynamic Hyper-Luxury Gateway</title>
-    <!-- Üst Düzey Tipografi -->
+    <title>slotX — 4K Ultra VIP 3D Gateway</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-base: #030305;
-            --card-base: rgba(10, 11, 16, 0.82);
-            --luxury-gold: #d4af37;
-            --platinum: #e5e5e5;
-            --crimson: #e31b23;
-            --cyan-glow: #00f0ff;
+            --bg-deep: #020204;
+            --card-glass: rgba(10, 12, 18, 0.75);
+            --gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.3);
+            --crimson: #ff2a3b;
+            --crimson-glow: rgba(255, 42, 59, 0.4);
+            --platinum: #f1f2f6;
         }
 
         * {
@@ -25,7 +25,7 @@
         }
 
         body {
-            background-color: var(--bg-base);
+            background-color: var(--bg-deep);
             color: #ffffff;
             min-height: 100vh;
             display: flex;
@@ -35,8 +35,8 @@
             position: relative;
         }
 
-        /* 🌌 HAREKETLİ ARKA PLAN TUVALİ (CANVAS) */
-        #particle-canvas {
+        /* 🪐 4K 3 BOYUTLU ETKİLEŞİMLİ CANVAS */
+        #render-canvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -46,16 +46,16 @@
             pointer-events: none;
         }
 
-        /* Katmanlı Derinlik Siyahlığı */
-        .bg-overlay {
+        /* Derinlik Artırıcı Karanlık Katman */
+        .viewport-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 40%, transparent 20%, var(--bg-base) 85%);
+            background: radial-gradient(circle at 50% 50%, transparent 10%, var(--bg-deep) 90%);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* Header Üst Panel */
+        /* Header / Üst Panel */
         header {
             max-width: 1400px;
             width: 100%;
@@ -64,52 +64,33 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
 
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 24px; right: 24px;
-            height: 100%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            pointer-events: none;
-        }
-
-        .brand-logo {
+        .logo {
             font-family: 'Syncopate', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 700;
             letter-spacing: -2px;
             text-transform: uppercase;
-            background: linear-gradient(180deg, #ffffff 40%, #888 100%);
+            background: linear-gradient(180deg, #ffffff 40%, #777777 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .sys-badge {
+        .secure-badge {
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 4px;
-            color: rgba(255, 255, 255, 0.3);
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: var(--gold);
+            font-weight: 700;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 8px 16px;
+            background: rgba(0,0,0,0.5);
         }
 
-        .sys-badge span {
-            color: var(--cyan-glow);
-            animation: pulse-glow 2s infinite;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.5; text-shadow: 0 0 2px var(--cyan-glow); }
-            50% { opacity: 1; text-shadow: 0 0 12px var(--cyan-glow); }
-        }
-
-        /* Ana İçerik */
-        .container {
+        /* Ana İçerik Alanı */
+        .wrapper {
             max-width: 1400px;
             width: 100%;
             margin: 0 auto;
@@ -117,72 +98,76 @@
             flex: 1;
         }
 
-        .hero-text {
+        .main-headline {
             margin-bottom: 60px;
         }
 
-        .hero-text h1 {
+        .main-headline h1 {
             font-size: 4rem;
             font-weight: 900;
             letter-spacing: -2px;
             text-transform: uppercase;
             line-height: 0.95;
-            color: #ffffff;
+            background: linear-gradient(180deg, #ffffff 50%, rgba(255,255,255,0.1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Kübik Matris Düzeni */
-        .matrix-grid {
+        /* 3D Premium Kart Grid Sistemi */
+        .portal-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 24px;
             margin-bottom: 80px;
         }
 
-        /* Ultra-Lüks Minimalist Kart Yapısı */
-        .matrix-card {
-            background: var(--card-base);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+        /* Cam-Metal Karışımı Ultra Lüks Kart */
+        .portal-card {
+            background: var(--card-glass);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             padding: 50px 35px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 390px;
+            min-height: 400px;
             position: relative;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
 
-        /* İnce Aktif Çizgi */
-        .matrix-card::before {
+        /* Üst 3D Işık Çizgisi */
+        .portal-card::before {
             content: '';
             position: absolute;
-            bottom: 0; left: 0; width: 0; height: 2px;
-            background: var(--platinum);
+            top: 0; left: 0; width: 0; height: 2px;
+            background: var(--gold);
+            box-shadow: 0 0 15px var(--gold);
             transition: width 0.4s ease;
         }
 
-        .matrix-card:hover {
-            transform: scale(1.02) translateY(-4px);
-            background: rgba(16, 18, 26, 0.9);
-            border-color: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        .portal-card:hover {
+            transform: scale(1.03) translateY(-5px);
+            background: rgba(18, 22, 33, 0.85);
+            border-color: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 40px 80px rgba(212, 175, 55, 0.05);
         }
 
-        .matrix-card:hover::before {
+        .portal-card:hover::before {
             width: 100%;
         }
 
-        .card-tier {
+        .card-tag {
             font-family: 'Syncopate', sans-serif;
             font-size: 0.65rem;
-            color: rgba(255, 255, 255, 0.25);
+            color: rgba(255, 255, 255, 0.2);
             letter-spacing: 3px;
             margin-bottom: 20px;
             font-weight: 700;
         }
 
-        .matrix-card h2 {
+        .portal-card h2 {
             font-size: 2rem;
             font-weight: 900;
             letter-spacing: -1px;
@@ -191,20 +176,20 @@
             margin-bottom: 15px;
         }
 
-        .matrix-card p {
-            color: #5d6370;
+        .portal-card p {
+            color: #636975;
             font-size: 0.88rem;
             line-height: 1.6;
             margin-bottom: 40px;
             transition: color 0.3s;
         }
 
-        .matrix-card:hover p {
-            color: #9ba4b5;
+        .portal-card:hover p {
+            color: #b0b9c8;
         }
 
-        /* ⚡ ETKİLEŞİMLİ PRO BUTONLAR */
-        .action-gate {
+        /* 🚀 ENERJİK GİRİŞ BUTONLARI */
+        .launch-link {
             display: block;
             width: 100%;
             background: rgba(255, 255, 255, 0.02);
@@ -220,47 +205,48 @@
             transition: all 0.4s ease;
         }
 
-        .matrix-card:hover class {
-            border-color: transparent;
-        }
-
-        .matrix-card:hover .action-gate {
+        .portal-card:hover .launch-link {
             background: #ffffff;
             color: #000000;
             font-weight: 900;
-            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15);
+            border-color: transparent;
         }
 
-        /* 🔥 LİGOBET - ASİL KIRMIZI VE SİYAH VIP ALANI */
-        .premium-override {
-            background: linear-gradient(180deg, rgba(16, 10, 11, 0.85) 0%, rgba(8, 5, 6, 0.95) 100%);
+        /* 🔥 LİGOBET - ASİL VIP ERİŞİM ALANI */
+        .ligobet-override {
+            background: linear-gradient(180deg, rgba(22, 12, 14, 0.8) 0%, rgba(10, 5, 6, 0.95) 100%);
         }
 
-        .premium-override::before {
+        .ligobet-override::before {
             background: var(--crimson);
             box-shadow: 0 0 15px var(--crimson);
         }
 
-        .premium-override .card-tier {
+        .ligobet-override .card-tag {
             color: var(--crimson);
         }
 
-        .premium-override:hover .action-gate {
-            background: var(--crimson);
-            color: #ffffff;
-            box-shadow: 0 15px 30px rgba(227, 27, 35, 0.3);
-            border-color: transparent;
+        .ligobet-override:hover {
+            border-color: rgba(255, 42, 59, 0.25);
+            box-shadow: 0 40px 80px rgba(255, 42, 59, 0.05);
         }
 
-        /* Alt İletişim Masası */
-        .terminal-footer {
-            background: #020204;
+        .ligobet-override:hover .launch-link {
+            background: var(--crimson);
+            color: #ffffff;
+            box-shadow: 0 15px 30px var(--crimson-glow);
+        }
+
+        /* Alt İletişim / Masalar */
+        .footer-terminal {
+            background: #010102;
             border-top: 1px solid rgba(255, 255, 255, 0.02);
             padding: 60px 24px;
             z-index: 2;
         }
 
-        .terminal-wrapper {
+        .terminal-container {
             max-width: 1400px;
             width: 100%;
             margin: 0 auto;
@@ -271,7 +257,7 @@
             gap: 40px;
         }
 
-        .terminal-info h3 {
+        .terminal-text h3 {
             font-family: 'Syncopate', sans-serif;
             font-size: 1.1rem;
             font-weight: 700;
@@ -279,7 +265,7 @@
             margin-bottom: 5px;
         }
 
-        .terminal-info p {
+        .terminal-text p {
             color: #3b3e4a;
             font-size: 0.8rem;
             font-weight: 700;
@@ -287,12 +273,12 @@
             letter-spacing: 1px;
         }
 
-        .terminal-actions {
+        .terminal-buttons {
             display: flex;
             gap: 15px;
         }
 
-        .term-link {
+        .btn-social {
             text-decoration: none;
             color: #ffffff;
             font-size: 0.75rem;
@@ -305,136 +291,142 @@
             transition: all 0.3s;
         }
 
-        .term-link:hover {
+        .btn-social:hover {
             background: #ffffff;
             color: #000000;
         }
 
-        .term-link.highlight {
-            color: var(--cyan-glow);
-            border-color: rgba(0, 240, 255, 0.15);
+        .btn-social.tg-marketing {
+            color: var(--gold);
+            border-color: rgba(212, 175, 55, 0.2);
         }
 
-        .term-link.highlight:hover {
-            background: var(--cyan-glow);
+        .btn-social.tg-marketing:hover {
+            background: var(--gold);
             color: #000000;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 20px var(--gold-glow);
             border-color: transparent;
         }
 
-        .legal {
+        .legal-notice {
             width: 100%;
             text-align: center;
             margin-top: 50px;
             font-size: 0.65rem;
-            color: #1c1d24;
+            color: #17181c;
             letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 700;
         }
 
-        /* %100 Mobil Entegrasyonu */
+        /* Mobil Cihaz Duyarlılığı */
         @media (max-width: 900px) {
             header { padding: 30px 20px; }
-            .hero-text h1 { font-size: 2.5rem; }
-            .matrix-grid { grid-template-columns: 1fr; gap: 20px; }
-            .terminal-wrapper { flex-direction: column; text-align: center; }
-            .terminal-actions { width: 100%; flex-direction: column; }
-            .term-link { width: 100%; text-align: center; }
+            .main-headline h1 { font-size: 2.5rem; }
+            .portal-grid { grid-template-columns: 1fr; gap: 20px; }
+            .terminal-container { flex-direction: column; text-align: center; }
+            .terminal-buttons { width: 100%; flex-direction: column; }
+            .btn-social { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Akışkan Arka Plan Elemanları -->
-    <canvas id="particle-canvas"></canvas>
-    <div class="bg-overlay"></div>
+    <canvas id="render-canvas"></canvas>
+    <div class="viewport-overlay"></div>
 
-    <!-- Üst Kontrol Katmanı -->
     <header>
-        <div class="brand-logo">slotX</div>
-        <div class="sys-badge">NETWORK: <span>ONLINE</span></div>
+        <div class="logo">slotX</div>
+        <div class="secure-badge">GÜVENLİ ERİŞİM KAPISI</div>
     </header>
 
-    <!-- Ana Portaller -->
-    <div class="container">
+    <div class="wrapper">
         
-        <div class="hero-text">
-            <h1>DYNAMIC<br>GAMING HUB</h1>
+        <div class="main-headline">
+            <h1>3 BOYUTLU<br>VIP CASINO LOBİSİ</h1>
         </div>
 
-        <div class="matrix-grid">
+        <div class="portal-grid">
             
-            <!-- LİGOBET VIP -->
-            <div class="matrix-card premium-override">
+            <div class="portal-card ligobet-override">
                 <div>
-                    <div class="card-tier">SECURE GATE // VIP SYSTEM</div>
+                    <div class="card-tag">ÖNCELİKLİ ALAN // VIP SİSTEM</div>
                     <h2>LİGOBET</h2>
-                    <p>Yüksek limitli masalar, rezerve edilmiş slot havuzları ve en üst segment finansal öncelik protokolü.</p>
+                    <p>Yüksek hacimli masalar, elit slot havuzları ve tamamen kişiselleştirilmiş anlık finansal transfer protokolü.</p>
                 </div>
-                <a href="https://ligogr.xyz/BBlq" target="_blank" class="action-gate">BAĞLANTIYI AÇ</a>
+                <a href="https://ligogr.xyz/BBlq" target="_blank" class="launch-link">MASAYA GEÇ</a>
             </div>
 
-            <!-- BET21 -->
-            <div class="matrix-card">
+            <div class="portal-card">
                 <div>
-                    <div class="card-tier">PORTAL STAGE // 02</div>
+                    <div class="card-tag">PORTAL SEVİYESİ // 02</div>
                     <h2>BET21</h2>
-                    <p>Otomatik entegre %30 anlık nakit iade güvencesiyle kayıpları minimize eden kurumsal casino alanı.</p>
+                    <p>Sistem tarafından otomatik hesaplanan %30 anlık nakit iade (cashback) güvencesine sahip kurumsal lobi.</p>
                 </div>
-                <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="action-gate">BAĞLANTIYI AÇ</a>
+                <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="launch-link">MASAYA GEÇ</a>
             </div>
 
-            <!-- PARİPULSE -->
-            <div class="matrix-card">
+            <div class="portal-card">
                 <div>
-                    <div class="card-tier">FAST FEED // X-NET</div>
+                    <div class="card-tag">HIZLI AKTARIM // KRİPTO</div>
                     <h2>PARİPULSE</h2>
-                    <p>Küresel ağ lisansına sahip, merkeziyetsiz kripto transferleri destekleyen yeni nesil canlı slot sistemi.</p>
+                    <p>Uluslararası lisans standartlarında, merkeziyetsiz hızlı çekim ağlarını destekleyen modern entegrasyon.</p>
                 </div>
-                <a href="https://pari-pulse.com/Bhbar" target="_blank" class="action-gate">BAĞLANTIYI AÇ</a>
+                <a href="https://pari-pulse.com/Bhbar" target="_blank" class="launch-link">MASAYA GEÇ</a>
             </div>
 
-            <!-- BETBALİNA -->
-            <div class="matrix-card">
+            <div class="portal-card">
                 <div>
-                    <div class="card-tier">ENGINE BLOCK // V-CORE</div>
+                    <div class="card-tag">YÜKSEK ÇARPAN // MATRİS</div>
                     <h2>BETBALİNA</h2>
-                    <p>Özel şans çarpanları ve sürekli güncellenen peri temalı etkileşimli jackpot yazılım mimarisi.</p>
+                    <p>Özel algoritmalar ve güncellenmiş peri temalı interaktif şans oyunları ve jackpot altyapı istasyonu.</p>
                 </div>
-                <a href="https://betbal.ink/peri" target="_blank" class="action-gate">BAĞLANTIYI AÇ</a>
+                <a href="https://betbal.ink/peri" target="_blank" class="launch-link">MASAYA GEÇ</a>
             </div>
 
         </div>
 
     </div>
 
-    <!-- Alt Masalar -->
-    <div class="terminal-footer">
-        <div class="terminal-wrapper">
-            <div class="terminal-info">
-                <h3>SLOTX INFRASTRUCTURE</h3>
-                <p>Resmi koordinasyon merkezleri ve küresel veri duyuru hatları.</p>
+    <div class="footer-terminal">
+        <div class="terminal-container">
+            <div class="terminal-text">
+                <h3>SLOTX RESMİ COORD DESK</h3>
+                <p>Doğrulanmış ağ duyuruları, domain güncellemeleri ve kurumsal pazarlama masası.</p>
             </div>
-            <div class="terminal-actions">
-                <a href="https://t.me/slotxduyuru" target="_blank" class="term-link">DUYURU KANALI</a>
-                <a href="https://t.me/slotXmarketing" target="_blank" class="term-link highlight">MARKETING DESK</a>
+            <div class="terminal-buttons">
+                <a href="https://t.me/slotxduyuru" target="_blank" class="btn-social">DUYURU KANALI</a>
+                <a href="https://t.me/slotXmarketing" target="_blank" class="btn-social tg-marketing">MARKETING DESK</a>
             </div>
-            <div class="legal">
-                &copy; 2026 slotX enterprise. Encrypted digital gateway architecture. +18 Only.
+            <div class="legal-notice">
+                &copy; 2026 slotX directory. Şifrelenmiş VIP ağ altyapısı. Sadece +18 yaş üzeri oyuncular içindir.
             </div>
         </div>
     </div>
 
-    <!-- 🌌 ARKA PLAN PARÇACIK (PARTICLE) JAVASCRIPT ALTYAPISI -->
     <script>
-        const canvas = document.getElementById('particle-canvas');
+        const canvas = document.getElementById('render-canvas');
         const ctx = canvas.getContext('2d');
 
         let particles = [];
-        const particleCount = 75; // Optimize edilmiş, kasmayan akıcı yoğunluk
+        // 4K Ekranlarda bile kusursuz keskinlik sağlamak için yüksek yoğunluk
+        const particleCount = 120; 
+        
+        // Fare koordinatlarını yakalayıp 3D derinlik illüzyonu yaratma
+        let mouse = { x: null, y: null, radius: 180 };
+
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
 
         function resizeCanvas() {
+            // 4K Ultra HD ekranlar için çözünürlük ölçekleyici
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
@@ -445,37 +437,56 @@
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.5 + 0.5;
-                this.speedX = Math.random() * 0.4 - 0.2;
-                this.speedY = Math.random() * -0.5 - 0.1; // Yukarı doğru yavaş akış
-                this.opacity = Math.random() * 0.5 + 0.1;
+                // 3D Perspektif Derinlik Katsayısı (Z-Index simülasyonu)
+                this.z = Math.random() * 2 + 0.5; 
+                this.size = this.z * 1.5; // Uzaktakiler küçük, yakındakiler büyük
+                this.speedX = (Math.random() * 0.3 - 0.15) * this.z;
+                this.speedY = (Math.random() * -0.4 - 0.1) * this.z; // Sürekli asil bir yükseliş
+                this.opacity = (Math.random() * 0.4 + 0.1) * (this.z / 2);
             }
 
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
 
+                // Ekrandan çıkan parçacığı dipten tekrar 3 boyutlu canlandırma
                 if (this.y < 0) {
                     this.y = canvas.height;
                     this.x = Math.random() * canvas.width;
+                    this.z = Math.random() * 2 + 0.5;
+                    this.size = this.z * 1.5;
                 }
-                if (this.x < 0 || this.x > canvas.width) {
-                    this.speedX *= -1;
+
+                // Fare ile 3 Boyutlu İtme/Etkileşim Algoritması
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = this.x - mouse.x;
+                    let dy = this.y - mouse.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius) {
+                        let force = (mouse.radius - distance) / mouse.radius;
+                        let directionX = (dx / distance) * force * 4 * this.z;
+                        let directionY = (dy / distance) * force * 4 * this.z;
+                        this.x += directionX;
+                        this.y += directionY;
+                    }
                 }
             }
 
             draw() {
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                ctx.shadowBlur = 4;
-                ctx.shadowColor = '#fff';
+                // Katmanlı altın ve platin 3D toz bulutu rengi
+                ctx.fillStyle = this.z > 1.8 ? `rgba(212, 175, 55, ${this.opacity + 0.2})` : `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.shadowBlur = this.z > 1.8 ? 8 : 2;
+                ctx.shadowColor = this.z > 1.8 ? '#d4af37' : '#fff';
+                
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.shadowBlur = 0; // Reset blur
+                ctx.shadowBlur = 0; // Grafik kartını yormamak için sıfırla
             }
         }
 
         function init() {
+            particles = [];
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
@@ -484,10 +495,10 @@
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Çizgisel Matris Hatları (Arka Plan Kılavuz Çizgileri)
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.015)';
+            // Arka planda 4K hissi veren çok hafif kılavuz çizgiler
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.008)';
             ctx.lineWidth = 0.5;
-            for (let i = 0; i < canvas.width; i += 80) {
+            for (let i = 0; i < canvas.width; i += 100) {
                 ctx.beginPath();
                 ctx.moveTo(i, 0);
                 ctx.lineTo(i, canvas.height);
