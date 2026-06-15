@@ -3,150 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Royal Nile Hub</title>
+<title>ROYAL CLEO</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-font-family:Arial,sans-serif;
-background:#090909;
-color:#fff;
+font-family:'Cinzel',serif;
+background:#060606;
+color:white;
+overflow-x:hidden;
 }
 .hero{
-min-height:100vh;
+height:100vh;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
+flex-direction:column;
 text-align:center;
 padding:20px;
 background:
-linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-url('https://images.unsplash.com/photo-1539650116574-75c0c6d73f4e?q=80&w=1600') center/cover;
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.85)),
+url("https://images.unsplash.com/photo-1568322445389-f64ac2515020?q=80&w=1800") center/cover;
 }
 .logo{
-font-size:60px;
-font-weight:900;
-color:#f7c948;
-text-shadow:0 0 25px #f7c948;
+font-size:70px;
+font-weight:800;
+color:#f5c542;
+text-shadow:0 0 25px rgba(245,197,66,.8);
 }
-.subtitle{
+.desc{
 max-width:700px;
-margin:20px auto;
+margin-top:20px;
+font-size:18px;
 color:#ddd;
+line-height:1.8;
 }
-.btns{
+.buttons{
+margin-top:35px;
 display:flex;
 gap:15px;
 flex-wrap:wrap;
 justify-content:center;
-margin-top:25px;
 }
 .btn{
-padding:14px 28px;
+padding:15px 35px;
 border-radius:12px;
-text-decoration:none;
-font-weight:bold;
-background:#f7c948;
+background:linear-gradient(45deg,#d4a017,#ffd76a);
 color:#000;
+text-decoration:none;
+font-weight:700;
+box-shadow:0 0 20px rgba(255,215,106,.4);
 }
 .section{
-padding:70px 20px;
 max-width:1200px;
 margin:auto;
+padding:80px 20px;
 }
 .title{
 text-align:center;
-font-size:36px;
-color:#f7c948;
-margin-bottom:40px;
+font-size:42px;
+margin-bottom:50px;
+color:#f5c542;
 }
-.grid{
+.cards{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+gap:25px;
 }
 .card{
-background:#141414;
-border:1px solid #2b2b2b;
-border-radius:18px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(245,197,66,.15);
+backdrop-filter:blur(10px);
+border-radius:20px;
 padding:25px;
 transition:.3s;
 }
 .card:hover{
-transform:translateY(-6px);
-border-color:#f7c948;
+transform:translateY(-8px);
+border-color:#f5c542;
+box-shadow:0 0 25px rgba(245,197,66,.25);
 }
 .card h3{
-color:#f7c948;
+color:#f5c542;
 margin-bottom:10px;
+}
+.card p{
+color:#ccc;
+line-height:1.7;
 }
 .card a{
 display:inline-block;
 margin-top:15px;
-padding:10px 20px;
-background:#f7c948;
+padding:10px 22px;
+background:#f5c542;
 color:#000;
 border-radius:10px;
 text-decoration:none;
-font-weight:bold;
+font-weight:700;
 }
 footer{
+border-top:1px solid #222;
 padding:30px;
 text-align:center;
-border-top:1px solid #222;
-color:#999;
+color:#888;
+}
+.gold-line{
+height:2px;
+background:linear-gradient(to right,transparent,#f5c542,transparent);
+margin:20px auto;
+width:300px;
 }
 </style>
 </head>
 <body>
-
 <section class="hero">
-<div class="logo">ROYAL NILE</div>
-<p class="subtitle">
-Premium bağlantılar, duyurular ve sponsor vitrinleri tek merkezde.
+<div class="logo">ROYAL CLEO</div>
+<div class="gold-line"></div>
+<p class="desc">
+Premium bağlantılar, duyurular ve sponsor vitrinleri tek bir merkezde.
 </p>
-
-<div class="btns">
-<a href="#" class="btn">Topluluğa Katıl</a>
-<a href="#" class="btn">İletişim</a>
+<div class="buttons">
+<a href="#" class="btn">TOPLULUK</a>
+<a href="#" class="btn">İLETİŞİM</a>
 </div>
 </section>
-
 <section class="section">
-<h2 class="title">Premium Sponsorlar</h2>
-
-<div class="grid">
-
+<h2 class="title">PREMIUM ALANLAR</h2>
+<div class="cards">
 <div class="card">
-<h3>Sponsor Alanı 1</h3>
-<p>Özel tanıtım bölgesi.</p>
-<a href="#">Detay</a>
+<h3>VIP ALAN</h3>
+<p>Özel tanıtım bölümü.</p>
+<a href="#">İNCELE</a>
 </div>
-
 <div class="card">
-<h3>Sponsor Alanı 2</h3>
+<h3>GOLD ALAN</h3>
+<p>Öne çıkan vitrin kartı.</p>
+<a href="#">İNCELE</a>
+</div>
+<div class="card">
+<h3>ROYAL ALAN</h3>
 <p>Premium görünürlük alanı.</p>
-<a href="#">Detay</a>
+<a href="#">İNCELE</a>
 </div>
-
 <div class="card">
-<h3>Sponsor Alanı 3</h3>
-<p>Öne çıkan marka vitrini.</p>
-<a href="#">Detay</a>
+<h3>ELITE ALAN</h3>
+<p>Özel duyuru ve bağlantılar.</p>
+<a href="#">İNCELE</a>
 </div>
-
-<div class="card">
-<h3>Sponsor Alanı 4</h3>
-<p>Özel reklam bölümü.</p>
-<a href="#">Detay</a>
-</div>
-
 </div>
 </section>
-
 <footer>
-© 2026 Royal Nile Premium Hub
+© 2026 ROYAL CLEO
 </footer>
-
 </body>
 </html>
