@@ -14,6 +14,7 @@
             --secondary-gold: #fb8500;
             --text-color: #ffffff;
             --text-muted: #c5a880;
+            --telegram-color: #0088cc;
         }
 
         * {
@@ -47,14 +48,14 @@
         }
 
         .logo {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
             background: linear-gradient(to right, var(--primary-gold), #fff, var(--secondary-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0px 0px 10px rgba(255, 183, 3, 0.5));
+            filter: drop-shadow(0px 0px 15px rgba(255, 183, 3, 0.6));
             display: inline-block;
         }
 
@@ -175,6 +176,136 @@
             transform: scale(1.05);
         }
 
+        /* --- TELEGRAM REKLAM POPUP (GİRİŞTE ÇIKAN) --- */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: all 0.4s ease;
+        }
+
+        .popup-box {
+            background: linear-gradient(145deg, #1f2833 0%, #151b24 100%);
+            border: 2px solid var(--primary-gold);
+            box-shadow: 0 0 30px rgba(255, 183, 3, 0.3);
+            width: 90%;
+            max-width: 400px;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            transform: scale(1);
+            transition: all 0.4s ease;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .popup-close:hover {
+            background: #ff4d4d;
+            color: #fff;
+        }
+
+        .popup-icon {
+            font-size: 4rem;
+            color: var(--telegram-color);
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .popup-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .popup-title span {
+            color: var(--primary-gold);
+        }
+
+        .popup-text {
+            color: #c5a880;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .popup-join-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4);
+            transition: all 0.3s;
+        }
+
+        .popup-join-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.6);
+        }
+
+        /* Sağ Alttaki Sabit Küçük Telegram Butonu (Hatırlatıcı) */
+        .fixed-telegram {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--telegram-color);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 999;
+            animation: bounce 2s infinite;
+        }
+
+        /* Animasyonlar */
+        @keyframes pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(0, 136, 204, 0)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(0, 136, 204, 0.6)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(0, 136, 204, 0)); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
         /* Alt Bilgi */
         footer {
             margin-top: 40px;
@@ -186,13 +317,35 @@
 </head>
 <body>
 
+    <!-- GİRİŞTEKİ REKLAM POPUP ALANI -->
+    <div class="popup-overlay" id="welcomePopup">
+        <div class="popup-box">
+            <button class="popup-close" onclick="closePopup()"><i class="fas fa-times"></i></button>
+            <div class="popup-icon"><i class="fab fa-telegram"></i></div>
+            <div class="popup-title"><span>slotX</span> DUYURU</div>
+            <div class="popup-text">
+                En güncel giriş adresleri, dev etkinlikler ve anlık nakit bonus kaçırmamak için resmi Telegram kanalımıza hemen katılın!
+            </div>
+            <a href="https://t.me/slotxduyuru" target="_blank" class="popup-join-btn" onclick="closePopup()">
+                <i class="fab fa-telegram-plane"></i> KANALA KATIL
+            </a>
+        </div>
+    </div>
+
+    <!-- SAĞ ALT SABİT TELEGRAM BUTONU -->
+    <a href="https://t.me/slotxduyuru" target="_blank" class="fixed-telegram" title="Telegram Duyuru">
+        <i class="fab fa-telegram-plane"></i>
+    </a>
+
     <div class="container">
         
+        <!-- Logo Alanı -->
         <div class="logo-area">
             <div class="logo">slotX</div>
             <div class="subtitle">Resmi Giriş & Bonus Destek Hattı</div>
         </div>
 
+        <!-- Sosyal Medya Kanalları -->
         <div class="social-channels">
             <a href="https://t.me/slotxduyuru" target="_blank" class="social-btn">
                 <i class="fab fa-telegram"></i> Duyuru Kanalı
@@ -202,8 +355,10 @@
             </a>
         </div>
 
+        <!-- Link Listesi -->
         <div class="links-title">Güncel Giriş Adresleri</div>
 
+        <!-- LİGOBET -->
         <div class="link-card">
             <div class="brand-info">
                 <div class="brand-name">LİGOBET</div>
@@ -212,6 +367,7 @@
             <a href="https://ligogr.xyz/BBlq" target="_blank" class="go-btn">GİRİŞ YAP</a>
         </div>
 
+        <!-- BET21 -->
         <div class="link-card">
             <div class="brand-info">
                 <div class="brand-name">BET21</div>
@@ -220,6 +376,7 @@
             <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="go-btn">GİRİŞ YAP</a>
         </div>
 
+        <!-- PARİPULSE -->
         <div class="link-card">
             <div class="brand-info">
                 <div class="brand-name">PARİPULSE</div>
@@ -228,6 +385,7 @@
             <a href="https://pari-pulse.com/Bhbar" target="_blank" class="go-btn">GİRİŞ YAP</a>
         </div>
 
+        <!-- BETBALİNA -->
         <div class="link-card">
             <div class="brand-info">
                 <div class="brand-name">BETBALİNA</div>
@@ -236,11 +394,23 @@
             <a href="https://betbal.ink/peri" target="_blank" class="go-btn">GİRİŞ YAP</a>
         </div>
 
+        <!-- Alt Bilgi Metni -->
         <footer>
             &copy; 2026 slotX. Tüm hakları saklıdır. +18 Sorumlu Oyun.
         </footer>
 
     </div>
+
+    <!-- REKLAMI KAPATAN JAVASCRIPT KODU -->
+    <script>
+        function closePopup() {
+            const overlay = document.getElementById('welcomePopup');
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 400); // Kapanış animasyonu süresi
+        }
+    </script>
 
 </body>
 </html>
