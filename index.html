@@ -3,278 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>slotX - Güvenilir Bahis Sponsorları</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>slotX - Güvenilir Giriş ve Bonus Adresi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Gereksiz tüm süsler kaldırıldı, saf baronbonus arayüzü */
+        /* Casino Teması Genel Renkleri */
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: #1f2833;
+            --primary-gold: #ffb703;
+            --secondary-gold: #fb8500;
+            --text-color: #ffffff;
+            --text-muted: #c5a880;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #0b0e14; /* Net mat karanlık arka plan */
-            color: #ffffff;
+            background: radial-gradient(circle, #1a1c23 0%, var(--bg-color) 100%);
+            color: var(--text-color);
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            padding: 20px;
         }
 
-        /* Üst Kayan Yazı */
-        .marquee-strip {
+        /* Konteyner */
+        .container {
             width: 100%;
-            background: #151a24;
-            border-bottom: 2px solid #7000ff;
-            padding: 8px 0;
-            overflow: hidden;
-            white-space: nowrap;
+            max-width: 500px;
+            text-align: center;
+            margin-top: 30px;
         }
 
-        .marquee-strip p {
-            display: inline-block;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #00ffaa;
+        /* Logo Alanı */
+        .logo-area {
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 900;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, var(--primary-gold), #fff, var(--secondary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 0px 10px rgba(255, 183, 3, 0.5));
+            display: inline-block;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 5px;
             letter-spacing: 1px;
-            animation: scrollText 20s linear infinite;
         }
 
-        @keyframes scrollText {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+        /* Sosyal Medya İkonları */
+        .social-channels {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 35px;
         }
 
-        /* Navbar */
-        .header-nav {
-            width: 100%;
-            max-width: 800px;
+        .social-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 183, 3, 0.3);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--primary-gold);
+            color: #000;
+            box-shadow: 0 0 15px var(--primary-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Sponsor / Link Butonları Bölümü */
+        .links-title {
+            text-align: left;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            padding-left: 5px;
+            border-left: 3px solid var(--primary-gold);
+        }
+
+        .link-card {
+            background: var(--card-bg);
+            border: 2px solid rgba(255, 183, 3, 0.1);
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .main-logo {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #ffffff;
-            text-transform: uppercase;
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
         }
 
-        .main-logo span {
-            color: #7000ff;
+        .link-card:hover::before {
+            left: 120%;
         }
 
-        .social-box {
-            display: flex;
-            gap: 10px;
+        .link-card:hover {
+            border-color: var(--primary-gold);
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
         }
 
-        .tg-btn {
-            background: #151a24;
-            border: 1px solid #222c3d;
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .tg-btn:hover {
-            background: #7000ff;
-            border-color: #7000ff;
-        }
-
-        /* Ana Liste Alanı */
-        .content-wrapper {
-            width: 100%;
-            max-width: 800px;
-            padding: 0 15px;
-            margin-top: 10px;
-        }
-
-        .list-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #94a3b8;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        /* Sadece Alt Alta Sıralanan Liste */
-        .baron-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        /* Her Bir Satır */
-        .baron-row {
-            background: #151a24;
-            border: 1px solid #222c3d;
-            border-radius: 12px;
-            padding: 18px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between; /* Sol içerik sola, buton sağa sabit */
-        }
-
-        /* Sol Taraf: İsim ve Alt Bilgi */
-        .left-content {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+        .brand-info {
+            text-align: left;
         }
 
         .brand-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #fff;
         }
 
-        /* Sadece Sol Taraftaki Marka Renkleri Değişiyor */
-        .col-ligobet { color: #ffaa00; }
-        .col-bet21 { color: #00c6ff; }
-        .col-paripulse { color: #e040fb; }
-        .col-betbalina { color: #00ff87; }
-
-        .brand-sub {
-            font-size: 0.85rem;
-            color: #64748b;
-            font-weight: 500;
-        }
-
-        /* Sağ Taraf: Birebir Aynı, Sabit ve Standart Giriş Butonları */
-        .btn-link {
-            text-decoration: none;
-        }
-
-        .baron-btn {
-            background: #7000ff; /* Standart Başlangıç Rengi (Mor) */
-            color: #ffffff;
-            width: 130px; /* Bütün butonların boyutu tamamen aynı */
-            padding: 12px 0;
-            text-align: center;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-        }
-
-        /* Butonun Üzerine Gelindiğinde Sadece Rengi Yeşil Oluyor, Yapısı Sabit Kalıyor */
-        .btn-link:hover .baron-btn {
-            background: #00ffaa;
-            color: #0b0e14;
-        }
-
-        /* Mobil Cihazlar İçin Uyum */
-        @media (max-width: 500px) {
-            .baron-row {
-                padding: 15px;
-            }
-            .brand-name {
-                font-size: 1.2rem;
-            }
-            .baron-btn {
-                width: 100px;
-                font-size: 0.8rem;
-                padding: 10px 0;
-            }
-        }
-
-        footer {
-            margin-top: 60px;
-            margin-bottom: 30px;
-            text-align: center;
-            color: #334155;
+        .brand-tag {
             font-size: 0.8rem;
+            color: var(--primary-gold);
+            margin-top: 2px;
+        }
+
+        /* Git Butonu */
+        .go-btn {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+            color: #000;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(251, 133, 0, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .go-btn:hover {
+            box-shadow: 0 4px 25px var(--primary-gold);
+            transform: scale(1.05);
+        }
+
+        /* Alt Bilgi */
+        footer {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            padding-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Kayan Şerit -->
-    <div class="marquee-strip">
-        <p>⚠️ slotX RESMİ SPONSOR PANELİDİR • GÜVENLİĞİNİZ İÇİN YALNIZCA BU SAYFADAKİ AKTİF BUTONLARI KULLANINIZ •</p>
-    </div>
-
-    <!-- Logo ve Sosyal Medya -->
-    <div class="header-nav">
-        <div class="main-logo">slot<span>X</span></div>
-        <div class="social-box">
-            <a href="https://t.me/slotxduyuru" target="_blank" class="tg-btn">Telegram</a>
-            <a href="https://t.me/slotXmarketing" target="_blank" class="tg-btn">İletişim</a>
-        </div>
-    </div>
-
-    <!-- Ana Yapı -->
-    <div class="content-wrapper">
+    <div class="container">
         
-        <div class="list-title">Sponsor Bahis Şirketleri</div>
-
-        <!-- YAN YANA DEĞİL, SADECE ALT ALTA DÜZ LİSTE -->
-        <div class="baron-list">
-
-            <!-- LİGOBET -->
-            <div class="baron-row">
-                <div class="left-content">
-                    <div class="brand-name col-ligobet">Ligobet</div>
-                    <div class="brand-sub">Hızlı Çekim & VIP Yatırım</div>
-                </div>
-                <a href="https://ligogr.xyz/BBlq" target="_blank" class="btn-link">
-                    <div class="baron-btn">Giriş Yap</div>
-                </a>
-            </div>
-
-            <!-- BET21 -->
-            <div class="baron-row">
-                <div class="left-content">
-                    <div class="brand-name col-bet21">Bet21</div>
-                    <div class="brand-sub">%30 Kayıp İade Bonusu</div>
-                </div>
-                <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="btn-link">
-                    <div class="baron-btn">Giriş Yap</div>
-                </a>
-            </div>
-
-            <!-- PARİPULSE -->
-            <div class="baron-row">
-                <div class="left-content">
-                    <div class="brand-name col-paripulse">Paripulse</div>
-                    <div class="brand-sub">Güvenilir Kesintisiz Altyapı</div>
-                </div>
-                <a href="https://pari-pulse.com/Bhbar" target="_blank" class="btn-link">
-                    <div class="baron-btn">Giriş Yap</div>
-                </a>
-            </div>
-
-            <!-- BETBALİNA -->
-            <div class="baron-row">
-                <div class="left-content">
-                    <div class="brand-name col-betbalina">Betbalina</div>
-                    <div class="brand-sub">Güncel Slot ve Canlı Casino</div>
-                </div>
-                <a href="https://betbal.ink/peri" target="_blank" class="btn-link">
-                    <div class="baron-btn">Giriş Yap</div>
-                </a>
-            </div>
-
+        <div class="logo-area">
+            <div class="logo">slotX</div>
+            <div class="subtitle">Resmi Giriş & Bonus Destek Hattı</div>
         </div>
 
-    </div>
+        <div class="social-channels">
+            <a href="https://t.me/slotxduyuru" target="_blank" class="social-btn">
+                <i class="fab fa-telegram"></i> Duyuru Kanalı
+            </a>
+            <a href="https://t.me/slotXmarketing" target="_blank" class="social-btn">
+                <i class="fas fa-envelope"></i> İletişim / Marketing
+            </a>
+        </div>
 
-    <footer>
-        <p>© 2026 slotX Portal. Tüm hakları saklıdır. +18</p>
-    </footer>
+        <div class="links-title">Güncel Giriş Adresleri</div>
+
+        <div class="link-card">
+            <div class="brand-info">
+                <div class="brand-name">LİGOBET</div>
+                <div class="brand-tag">VIP Özel Alan Bağlantısı</div>
+            </div>
+            <a href="https://ligogr.xyz/BBlq" target="_blank" class="go-btn">GİRİŞ YAP</a>
+        </div>
+
+        <div class="link-card">
+            <div class="brand-info">
+                <div class="brand-name">BET21</div>
+                <div class="brand-tag">%30 Cashback & Nakit İade</div>
+            </div>
+            <a href="https://prod.trk21.com/click?domain=21.com&uid=WkXkqovc&campaign=cashback_30&t1=cashback_30&t2=1&ihub_hash=xNHMhjT2TCi3keH7YyJt" target="_blank" class="go-btn">GİRİŞ YAP</a>
+        </div>
+
+        <div class="link-card">
+            <div class="brand-info">
+                <div class="brand-name">PARİPULSE</div>
+                <div class="brand-tag">Kesintisiz Bahis Alanı</div>
+            </div>
+            <a href="https://pari-pulse.com/Bhbar" target="_blank" class="go-btn">GİRİŞ YAP</a>
+        </div>
+
+        <div class="link-card">
+            <div class="brand-info">
+                <div class="brand-name">BETBALİNA</div>
+                <div class="brand-tag">Güncel Alan Bağlantısı</div>
+            </div>
+            <a href="https://betbal.ink/peri" target="_blank" class="go-btn">GİRİŞ YAP</a>
+        </div>
+
+        <footer>
+            &copy; 2026 slotX. Tüm hakları saklıdır. +18 Sorumlu Oyun.
+        </footer>
+
+    </div>
 
 </body>
 </html>
